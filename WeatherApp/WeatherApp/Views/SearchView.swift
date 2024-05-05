@@ -13,13 +13,26 @@ struct SearchView: View {
     
     var body: some View {
         VStack {
-                TextField("Search", text: $searchText).padding(20).textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Search", text: $searchText)
+                .padding(.vertical, 20)
+                .padding(.horizontal, 20)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack {
                 Button(action: {}) {
-                    Text("Search").padding().font(.system(size: 20)).foregroundColor(.white).background(.blue).clipShape(RoundedRectangle(cornerRadius: 20))
+                    Text("Search")
+                        .padding()
+                        .font(.system(size: 20))
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 Button(action: {isSearchActive = false}) {
-                    Text("Close").padding().font(.system(size: 20)).foregroundColor(.white).background(.red).clipShape(RoundedRectangle(cornerRadius: 20))
+                    Text("Close")
+                        .padding()
+                        .font(.system(size: 20))
+                        .foregroundColor(.white)
+                        .background(.red)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 /*MyButton(image: "xmark.circle", color: Color.red, label: "", textColor: Color.blue, action: {isSearchActive = false})*/
             }
