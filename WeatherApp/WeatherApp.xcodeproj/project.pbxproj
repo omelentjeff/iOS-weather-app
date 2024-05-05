@@ -11,6 +11,7 @@
 		E883BBE92BE7B1EA003A0CC1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBE82BE7B1EA003A0CC1 /* ContentView.swift */; };
 		E883BBEB2BE7B1EB003A0CC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883BBEA2BE7B1EB003A0CC1 /* Assets.xcassets */; };
 		E883BBEE2BE7B1EB003A0CC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E883BBED2BE7B1EB003A0CC1 /* Preview Assets.xcassets */; };
+		E883BBF62BE7B244003A0CC1 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBF52BE7B244003A0CC1 /* TitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		E883BBE82BE7B1EA003A0CC1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E883BBEA2BE7B1EB003A0CC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E883BBED2BE7B1EB003A0CC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E883BBF52BE7B244003A0CC1 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				E883BBE62BE7B1EA003A0CC1 /* WeatherAppApp.swift */,
+				E883BBF42BE7B22C003A0CC1 /* Views */,
 				E883BBE82BE7B1EA003A0CC1 /* ContentView.swift */,
 				E883BBEA2BE7B1EB003A0CC1 /* Assets.xcassets */,
 				E883BBEC2BE7B1EB003A0CC1 /* Preview Content */,
@@ -65,6 +68,14 @@
 				E883BBED2BE7B1EB003A0CC1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E883BBF42BE7B22C003A0CC1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E883BBF52BE7B244003A0CC1 /* TitleView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			files = (
 				E883BBE92BE7B1EA003A0CC1 /* ContentView.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
+				E883BBF62BE7B244003A0CC1 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
