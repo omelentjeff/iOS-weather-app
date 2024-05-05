@@ -13,7 +13,8 @@ struct SearchView: View {
     
     var body: some View {
         VStack {
-            TextField("Search", text: $searchText)
+            Text("Search").padding(.top, 20).font(.system(size: 24)).bold()
+            TextField("Search a city...", text: $searchText)
                 .padding(.vertical, 20)
                 .padding(.horizontal, 20)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -21,7 +22,7 @@ struct SearchView: View {
                 Button(action: {}) {
                     Text("Search")
                         .padding()
-                        .font(.system(size: 20))
+                        .font(.system(size: 12))
                         .foregroundColor(.white)
                         .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -29,7 +30,7 @@ struct SearchView: View {
                 Button(action: {isSearchActive = false}) {
                     Text("Close")
                         .padding()
-                        .font(.system(size: 20))
+                        .font(.system(size: 12))
                         .foregroundColor(.white)
                         .background(.red)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
