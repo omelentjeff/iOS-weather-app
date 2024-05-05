@@ -10,9 +10,11 @@ import SwiftUI
 struct FooterView: View {
     var body: some View {
         HStack {
-            MyButton(image: "gearshape", color: Color.white, label: "settings", action: {})
+            MyButton(image: "star", color: Color.white, label: "favorites", action: {})
             Spacer()
             MyButton(image: "magnifyingglass", color: Color.white, label: "search", action: {})
+            Spacer()
+            MyButton(image: "gearshape", color: Color.white, label: "settings", action: {})
         }.background(.blue)
     }
 }
