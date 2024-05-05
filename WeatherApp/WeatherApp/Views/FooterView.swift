@@ -8,33 +8,18 @@
 import SwiftUI
 
 struct FooterView: View {
+    @State var isSearchActive: Bool = false
+    
     var body: some View {
         HStack {
-            MyButton(image: "star", color: Color.white, label: "favorites", action: {})
+            MyButton(image: "star", color: Color.white, label: "Favorites", textColor: Color.white, action: {})
             Spacer()
-            MyButton(image: "magnifyingglass", color: Color.white, label: "search", action: {})
+            MyButton(image: "magnifyingglass", color: Color.white, label: "Search", textColor: Color.white, action: {isSearchActive = true}).sheet(isPresented: $isSearchActive, content: {
+                SearchView(isSearchActive: $isSearchActive)
+            })
             Spacer()
-            MyButton(image: "gearshape", color: Color.white, label: "settings", action: {})
+            MyButton(image: "gearshape", color: Color.white, label: "Settings", textColor: Color.white, action: {})
         }.background(.blue)
     }
 }
 
-struct MyButton: View {
-    var image: String
-    var color: Color
-    var label: String
-    var action: () -> Void
-    
-    var body: some View {
-        VStack {
-            Button(action: action, label: {
-                Image(systemName: image)
-                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 1, trailing: 20))
-                    .font(.system(size: 24))
-                    .foregroundStyle(color)
-                //.cornerRadius(20)
-            })
-            Text(label).foregroundColor(.white).font(.system(size: 12)).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-        }
-    }
-}
