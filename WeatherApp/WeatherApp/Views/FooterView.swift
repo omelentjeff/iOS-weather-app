@@ -1,0 +1,34 @@
+//
+//  FooterView.swift
+//  WeatherApp
+//
+//  Created by Otto Melentjeff on 5.5.2024.
+//
+
+import SwiftUI
+
+struct FooterView: View {
+    var body: some View {
+        HStack {
+            MyButton(image: "gearshape", color: Color.white, action: {})
+            Spacer()
+            MyButton(image: "magnifyingglass", color: Color.white, action: {})
+        }.background(.blue)
+    }
+}
+
+struct MyButton: View {
+    var image: String
+    var color: Color
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: action, label: {
+            Image(systemName: image)
+                    .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing:20))
+                    .font(.system(size: 24))
+                    .foregroundStyle(color)
+                    //.cornerRadius(20)
+                })
+    }
+}

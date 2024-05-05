@@ -12,6 +12,7 @@ struct ContentView: View {
         VStack {
             TitleView()
             Spacer()
+            FooterView()
         }
     }
 }
