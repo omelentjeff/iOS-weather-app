@@ -5,7 +5,7 @@
 //  Created by Otto Melentjeff on 5.5.2024.
 //
 
-import SwiftUI
+/*import SwiftUI
 
 struct TabBar: View {
     @State var isSearchActive: Bool = false
@@ -30,3 +30,4 @@ struct TabBar: View {
     }
 }
 
+*/
