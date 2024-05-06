@@ -8,30 +8,22 @@
 import SwiftUI
 
 struct SearchView: View {
+    init() {
+      UITextField.appearance().clearButtonMode = .whileEditing
+    }
+    
     @State private var searchText = ""
     @State private var submittedText = ""
     
     var body: some View {
         VStack {
-            Text("Search").padding(.top, 20).font(.system(size: 24)).bold()
-            TextField("Search a city...", text: $searchText, onCommit: {
-                submitSearch()
-            })
-                .padding(.vertical, 20)
-                .padding(.horizontal, 20)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack {
-                Button(action: {
+                Image(systemName: "magnifyingglass")
+                TextField("Search...", text: $searchText).onSubmit {
                     submitSearch()
-                }) {
-                    Text("Search")
-                        .padding()
-                        .font(.system(size: 12))
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                }
-            }
+                }.textFieldStyle(OvalTextFieldStyle())
+            }.padding()
+            
             Spacer()
             Text(submittedText)
                             .multilineTextAlignment(.center)
@@ -46,3 +38,12 @@ struct SearchView: View {
         }
 }
 
+struct OvalTextFieldStyle: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .padding(10)
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .shadow(color: .gray, radius: 10)
+    }
+}
