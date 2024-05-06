@@ -8,18 +8,22 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Binding var isSearchActive: Bool
     @State private var searchText = ""
+    @State private var submittedText = ""
     
     var body: some View {
         VStack {
             Text("Search").padding(.top, 20).font(.system(size: 24)).bold()
-            TextField("Search a city...", text: $searchText)
+            TextField("Search a city...", text: $searchText, onCommit: {
+                submitSearch()
+            })
                 .padding(.vertical, 20)
                 .padding(.horizontal, 20)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    submitSearch()
+                }) {
                     Text("Search")
                         .padding()
                         .font(.system(size: 12))
@@ -27,17 +31,18 @@ struct SearchView: View {
                         .background(.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
-                Button(action: {isSearchActive = false}) {
-                    Text("Close")
-                        .padding()
-                        .font(.system(size: 12))
-                        .foregroundColor(.white)
-                        .background(.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                }
-                /*MyButton(image: "xmark.circle", color: Color.red, label: "", textColor: Color.blue, action: {isSearchActive = false})*/
             }
             Spacer()
+            Text(submittedText)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        Spacer()
         }
     }
+    
+    private func submitSearch() {
+            submittedText = searchText
+            searchText = ""
+        }
 }
+
