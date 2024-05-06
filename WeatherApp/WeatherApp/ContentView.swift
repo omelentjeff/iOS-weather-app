@@ -13,10 +13,6 @@ struct ContentView: View {
             TitleView()
             Spacer()
             TabView {
-                FavoritesView()
-                    .tabItem {
-                        Label("Favorites", systemImage: "star")
-                    }
                 HomeView()
                     .tabItem {
                         Label("Home", systemImage: "house")
@@ -25,14 +21,15 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
+                FavoritesView()
+                    .tabItem {
+                        Label("Favorites", systemImage: "star")
+                    }
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape")
                     }
-            }.onAppear() {
-                UITabBar.appearance().backgroundColor = UIColor(.gray).withAlphaComponent(0.3)
-            }.tint(.blue)
-            
+            }
         }
     }
 }
