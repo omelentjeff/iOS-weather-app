@@ -12,7 +12,20 @@ struct ContentView: View {
         VStack {
             TitleView()
             Spacer()
-            TabBar()
+            TabView {
+                FavoritesView()
+                      .tabItem {
+                          Label("Favorites", systemImage: "star")
+                      }
+                  SearchView()
+                      .tabItem {
+                          Label("Search", systemImage: "magnifyingglass")
+                      }
+                  SettingsView()
+                      .tabItem {
+                          Label("Settings", systemImage: "gearshape")
+                      }
+            }
         }
     }
 }
