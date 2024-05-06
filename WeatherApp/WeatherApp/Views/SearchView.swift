@@ -19,7 +19,7 @@ struct SearchView: View {
         VStack {
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField("Search...", text: $searchText).onSubmit {
+                TextField("Search for a city...", text: $searchText).onSubmit {
                     submitSearch()
                 }.textFieldStyle(OvalTextFieldStyle())
             }.padding()
