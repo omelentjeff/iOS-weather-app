@@ -16,6 +16,7 @@
 		E883BBFC2BE7C5F4003A0CC1 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBFB2BE7C5F4003A0CC1 /* MyButton.swift */; };
 		E883BBFE2BE7CC8D003A0CC1 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBFD2BE7CC8D003A0CC1 /* FavoritesView.swift */; };
 		E883BC002BE7CCC4003A0CC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */; };
+		E883BC022BE8D26A003A0CC1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BC012BE8D26A003A0CC1 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		E883BBFB2BE7C5F4003A0CC1 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		E883BBFD2BE7CC8D003A0CC1 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E883BC012BE8D26A003A0CC1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				E883BBF52BE7B244003A0CC1 /* TitleView.swift */,
 				E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */,
+				E883BC012BE8D26A003A0CC1 /* HomeView.swift */,
 				E883BBFB2BE7C5F4003A0CC1 /* MyButton.swift */,
 				E883BBFD2BE7CC8D003A0CC1 /* FavoritesView.swift */,
 				E883BBF92BE7C275003A0CC1 /* SearchView.swift */,
@@ -165,6 +168,7 @@
 				E883BBE92BE7B1EA003A0CC1 /* ContentView.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
 				E883BBFE2BE7CC8D003A0CC1 /* FavoritesView.swift in Sources */,
+				E883BC022BE8D26A003A0CC1 /* HomeView.swift in Sources */,
 				E883BBF62BE7B244003A0CC1 /* TitleView.swift in Sources */,
 				E883BBFC2BE7C5F4003A0CC1 /* MyButton.swift in Sources */,
 			);
