@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FooterView: View {
+struct TabBar: View {
     @State var isSearchActive: Bool = false
     @State var isSettingsActive: Bool = false
     @State var isFavoritesActive: Bool = false
