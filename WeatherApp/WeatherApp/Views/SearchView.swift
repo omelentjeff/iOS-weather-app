@@ -42,7 +42,7 @@ struct OvalTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(10)
-            .background(.gray.opacity(0.1))
+            //.background(.opacity(0.1))
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.secondary, lineWidth: 1)
