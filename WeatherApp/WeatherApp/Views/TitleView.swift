@@ -10,8 +10,8 @@ import SwiftUI
 struct TitleView: View {
     var body: some View {
         HStack {
-            Image(systemName: "sun.horizon.fill").font(.system(size: 20)).padding(.trailing, 5).foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-            Text("Weather App").font(.system(size: 20))
+            Image(systemName: "sun.horizon.fill").font(.system(size: 24)).padding(.leading, 5).foregroundColor(.blue)
+            Text("Weather App").font(Font.custom("Chalkduster", size: 20))
             Spacer()
         }.padding(.bottom, 10).padding(.leading, 10).background(.blue.opacity(0.2))
     }
