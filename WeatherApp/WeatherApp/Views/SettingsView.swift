@@ -6,9 +6,6 @@ struct SettingsView: View {
     
     var body: some View {
         VStack {
-            Text("Settings").padding(.top, 20).font(.system(size: 24)).bold()
-            Spacer()
-            
             Text("Choose theme")
 
             HStack {
