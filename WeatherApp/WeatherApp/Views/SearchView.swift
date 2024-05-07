@@ -42,8 +42,12 @@ struct OvalTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(10)
-            .background(Color.gray.opacity(0.1))
-            .cornerRadius(20)
-            .shadow(color: .gray, radius: 10)
+            .background(.gray.opacity(0.1))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(.secondary, lineWidth: 1)
+            )
+            //.cornerRadius(20)
+            //.shadow(color: .gray, radius: 10)
     }
 }
