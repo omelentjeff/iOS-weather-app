@@ -18,6 +18,8 @@
 		E883BC002BE7CCC4003A0CC1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */; };
 		E883BC022BE8D26A003A0CC1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BC012BE8D26A003A0CC1 /* HomeView.swift */; };
 		E883BC042BEA3ABC003A0CC1 /* DarkModeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BC032BEA3ABC003A0CC1 /* DarkModeViewModifier.swift */; };
+		E883BC062BEA824B003A0CC1 /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BC052BEA824B003A0CC1 /* CurrentWeatherView.swift */; };
+		E883BC082BEA833A003A0CC1 /* SevenDayForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BC072BEA833A003A0CC1 /* SevenDayForecastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E883BC012BE8D26A003A0CC1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E883BC032BEA3ABC003A0CC1 /* DarkModeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeViewModifier.swift; sourceTree = "<group>"; };
+		E883BC052BEA824B003A0CC1 /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
+		E883BC072BEA833A003A0CC1 /* SevenDayForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SevenDayForecastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 				E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */,
 				E883BC012BE8D26A003A0CC1 /* HomeView.swift */,
 				E883BC032BEA3ABC003A0CC1 /* DarkModeViewModifier.swift */,
+				E883BC052BEA824B003A0CC1 /* CurrentWeatherView.swift */,
+				E883BC072BEA833A003A0CC1 /* SevenDayForecastView.swift */,
 				E883BBFB2BE7C5F4003A0CC1 /* MyButton.swift */,
 				E883BBFD2BE7CC8D003A0CC1 /* FavoritesView.swift */,
 				E883BBF92BE7C275003A0CC1 /* SearchView.swift */,
@@ -168,7 +174,9 @@
 			files = (
 				E883BBFA2BE7C275003A0CC1 /* SearchView.swift in Sources */,
 				E883BC002BE7CCC4003A0CC1 /* SettingsView.swift in Sources */,
+				E883BC082BEA833A003A0CC1 /* SevenDayForecastView.swift in Sources */,
 				E883BBE92BE7B1EA003A0CC1 /* ContentView.swift in Sources */,
+				E883BC062BEA824B003A0CC1 /* CurrentWeatherView.swift in Sources */,
 				E883BC042BEA3ABC003A0CC1 /* DarkModeViewModifier.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
 				E883BBFE2BE7CC8D003A0CC1 /* FavoritesView.swift in Sources */,
