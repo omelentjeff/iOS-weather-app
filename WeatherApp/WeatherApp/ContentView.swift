@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        //UITabBar.appearance().backgroundColor = UIColor.systemPink
+    }
+    
     var body: some View {
         VStack {
             TitleView()
@@ -15,7 +19,7 @@ struct ContentView: View {
             TabView {
                 HomeView()
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("Home", systemImage: "sun.max.fill")
                     }
                 SearchView()
                     .tabItem {
@@ -23,7 +27,7 @@ struct ContentView: View {
                     }
                 FavoritesView()
                     .tabItem {
-                        Label("Favorites", systemImage: "star")
+                        Label("Favorites", systemImage: "heart")
                     }
                 SettingsView()
                     .tabItem {
