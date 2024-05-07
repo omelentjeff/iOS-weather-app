@@ -14,7 +14,7 @@ struct WeatherAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().preferredColorScheme(isDarkMode ? .dark : .light)
+            ContentView().modifier(DarkModeViewModifier())
         }
     }
 }
