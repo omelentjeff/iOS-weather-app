@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ContainerView: View {
+    @State private var isSplashScreenViewPresented = true
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if !isSplashScreenViewPresented {
+            ContentView()
+        } else {
+            SplashScreenView(isPresented: $isSplashScreenViewPresented)
+        }
     }
 }
