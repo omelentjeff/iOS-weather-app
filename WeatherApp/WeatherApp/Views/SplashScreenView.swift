@@ -16,6 +16,8 @@ struct SplashScreenView: View {
     @State private var titleOffsetX: CGFloat = -100
     @State private var opacity = 1.0
     @State private var imageColor: Color = .white
+    @State private var lineOpacity = 0.0 // Initial opacity of the line
+    @State private var lineLength: CGFloat = 0 // Initial length of the line
     
     var body: some View {
         ZStack {
@@ -26,17 +28,25 @@ struct SplashScreenView: View {
                     Image(systemName: "cloud.sun.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 140, height: 140)
                         .foregroundStyle(imageColor)
                         .opacity(imageOpacity)
                         .scaleEffect(scale)
                     
                     Text("Weather App")
-                        .font(Font.custom("Chalkduster", size: 28))
-                        .foregroundColor(.white)
+                        .font(Font.custom("Chalkduster", size: 32))
+                        .foregroundColor(.blue)
                         .opacity(titleOpacity)
                         .padding(.top, 20)
                         .offset(x: titleOffsetX)
+                        .shadow(color: .white, radius: 1)
+                    
+                    Rectangle()
+                        .fill(Color.blue)
+                        .opacity(lineOpacity)
+                        .frame(height: 1)
+                        .frame(width: lineLength)
+                        .shadow(color: .white, radius: 0.5)
                 }
             }
             
@@ -44,9 +54,9 @@ struct SplashScreenView: View {
         .opacity(opacity)
         .onAppear {
                     // Delay the initial scaling up animation by 0.2 seconds
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        withAnimation(.easeInOut(duration: 1.5)) {
-                            scale = CGSize(width: 1.5, height: 1.5)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        withAnimation(.easeInOut(duration: 1.2)) {
+                            scale = CGSize(width: 1.4, height: 1.4)
                             imageOpacity = 1
                         }
                     }
@@ -56,10 +66,17 @@ struct SplashScreenView: View {
                 titleOpacity = 1
             }*/
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                withAnimation(.easeInOut(duration: 0.4)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(.easeInOut(duration: 0.7)) {
                     titleOffsetX = 0
                     titleOpacity = 1
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    lineOpacity = 1 // Make the line visible
+                    lineLength = 200 // Adjust the desired length of the line
                 }
             }
             
@@ -76,10 +93,23 @@ struct SplashScreenView: View {
             }*/
             
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
                 withAnimation(.easeInOut(duration: 0.2)) {
                     titleOffsetX = 100
                     titleOpacity = 0
+                }
+            }*/
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    titleOpacity = 0
+                    lineOpacity = 0 // Start fading out the line
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+                withAnimation(.easeInOut(duration: 0.2)) {
+                    lineLength = 0 // Reduce the length of the line to 0
                 }
             }
             
