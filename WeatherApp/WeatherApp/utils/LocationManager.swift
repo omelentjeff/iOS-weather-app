@@ -5,25 +5,48 @@
 //  Created by Otto Melentjeff on 9.5.2024.
 //
 
-import Foundation
 import CoreLocation
-import CoreLocationUI
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    let manager = CLLocationManager()
-
-    @Published var location: CLLocationCoordinate2D?
-
-    override init() {
-        super.init()
-        manager.delegate = self
+final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    var locationManager: CLLocationManager?
+    
+    @Published var coordinates = CLLocationCoordinate2D()
+    
+    // Check if user's phone has location services enabled
+    func checkIfLocationServicesIsEnabled() {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager!.delegate = self
+            //locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        } else {
+            print("Location not allowed")
+        }
     }
-
-    func requestLocation() {
-        manager.requestLocation()
+    
+    // Check all cases for location manager's authorization status
+    private func checkLocationAuthorization() {
+        guard let locationManager = locationManager else { return }
+        
+        switch locationManager.authorizationStatus {
+            
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Your location is restricted, likely due to parental controls")
+        case .denied:
+            print("You have denied this app location permission, go to settings to change it")
+        case .authorizedAlways, .authorizedWhenInUse:
+            if let location = locationManager.location {
+                coordinates = location.coordinate
+            }
+        @unknown default:
+            break
+        }
     }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.first?.coordinate
+    
+    // Checks if location authorization has changed
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
     }
+    
 }
