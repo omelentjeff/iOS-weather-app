@@ -15,9 +15,10 @@ struct SplashScreenView: View {
     @State private var titleOpacity = 0.0
     @State private var titleOffsetX: CGFloat = -100
     @State private var opacity = 1.0
-    @State private var imageColor: Color = .white
+    @State private var imageColor: Color = .yellow
     @State private var lineOpacity = 0.0 // Initial opacity of the line
     @State private var lineLength: CGFloat = 0 // Initial length of the line
+    @State private var rotationAngle = Angle(degrees: 0)
     
     var body: some View {
         ZStack {
@@ -25,24 +26,25 @@ struct SplashScreenView: View {
             
             ZStack {
                 VStack {
-                    Image(systemName: "cloud.sun.fill")
+                    Image(systemName: "sun.max.fill")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 140, height: 140)
+                        .frame(width: 120, height: 120)
                         .foregroundStyle(imageColor)
                         .opacity(imageOpacity)
                         .scaleEffect(scale)
+                        .rotationEffect(rotationAngle)
                     
                     Text("Weather App")
                         .font(Font.custom("Chalkduster", size: 32))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.white)
                         .opacity(titleOpacity)
                         .padding(.top, 20)
                         .offset(x: titleOffsetX)
                         .shadow(color: .white, radius: 1)
                     
                     Rectangle()
-                        .fill(Color.blue)
+                        .fill(Color.white)
                         .opacity(lineOpacity)
                         .frame(height: 1)
                         .frame(width: lineLength)
@@ -56,7 +58,8 @@ struct SplashScreenView: View {
                     // Delay the initial scaling up animation by 0.2 seconds
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         withAnimation(.easeInOut(duration: 1.2)) {
-                            scale = CGSize(width: 1.4, height: 1.4)
+                            scale = CGSize(width: 1.2, height: 1.2)
+                            rotationAngle = Angle(degrees: 180)
                             imageOpacity = 1
                         }
                     }
