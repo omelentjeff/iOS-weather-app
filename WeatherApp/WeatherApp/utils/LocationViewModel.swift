@@ -14,12 +14,17 @@ final class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDele
     
     // Check if user's phone has location services enabled
     func checkIfLocationServicesIsEnabled() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
-            //locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        } else {
-            print("Location not allowed")
+        // Have to call this outside the main thread to avoid potential UI unresponsiveness
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                DispatchQueue.main.async {
+                    self.locationManager = CLLocationManager()
+                    self.locationManager!.delegate = self
+                    //locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+                }
+            } else {
+                print("Location not allowed")
+            }
         }
     }
     
