@@ -6,21 +6,17 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct CurrentWeatherView: View {
+    var coordinates: CLLocationCoordinate2D
+    
     var body: some View {
         Text("Pirkkala").font(.system(size: 32)).foregroundStyle(.blue).padding()
         Text("Weather Now")
-        HStack {
-            Spacer()
-            Image(systemName: "sun.max.fill").font(.system(size: 42)).foregroundStyle( Color.yellow)
-            Spacer()
-            Text("28°").font(.system(size: 36))
-            Spacer()
+        VStack {
+            Text("Your coordinates are: ")
+            Text("Lat: \(coordinates.latitude), Lon: \(coordinates.longitude)")
         }.padding()
     }
-}
-
-#Preview {
-    CurrentWeatherView()
 }
