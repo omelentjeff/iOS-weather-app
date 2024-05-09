@@ -19,7 +19,7 @@ struct ContentView: View {
             TabView {
                 HomeView()
                     .tabItem {
-                        Label("Home", systemImage: "sun.max.fill")
+                        Label("Weather", systemImage: "cloud.sun")
                     }
                 SearchView()
                     .tabItem {
