@@ -20,7 +20,7 @@ struct HomeView: View {
                     
                     //Spacer()
                     
-                    HourlyWeatherView()
+                    HourlyWeatherView().padding(.bottom, 20)
                     
                     // Spacer()
                     
