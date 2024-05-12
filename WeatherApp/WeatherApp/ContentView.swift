@@ -8,13 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    init() {
-        //UITabBar.appearance().backgroundColor = UIColor.systemPink
-    }
-    
     var body: some View {
         VStack {
-            TitleView()
+            //TitleView()
             Spacer()
             TabView {
                 HomeView()
