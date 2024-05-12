@@ -16,6 +16,6 @@ struct SevenDayForecastView: View {
                     DailyItemView()
                 }
             }.backgroundStyle(.blue.opacity(0.3)).frame(width: 340)
-        }
+        }.padding(.bottom, 20)
     }
 }

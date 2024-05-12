@@ -24,7 +24,7 @@ struct HomeView: View {
                     }
                 }.onAppear {
                     viewModel.checkIfLocationServicesIsEnabled()
-                }.padding(.bottom, 10).scrollTargetLayout()
+                }.scrollTargetLayout()
             }.scrollTargetBehavior(.viewAligned)
         }
     }
