@@ -13,6 +13,6 @@ struct TitleView: View {
             Image(systemName: "sun.horizon.fill").font(.system(size: 24)).padding(.leading, 5).foregroundColor(.blue)
             Text("Weather App").font(Font.custom("Chalkduster", size: 20))
             Spacer()
-        }.padding(.bottom, 10).padding(.leading, 10).background(.blue.opacity(0.2))
+        }.padding(.bottom, 10).padding(.leading, 10)
     }
 }
