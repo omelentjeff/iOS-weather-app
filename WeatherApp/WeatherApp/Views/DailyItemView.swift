@@ -9,10 +9,11 @@ import SwiftUI
 
 struct DailyItemView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("la").padding(.trailing, 20)
+            Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).padding(.bottom, 5)
+            Spacer()
+            Text("9°")
+        }.padding()
     }
-}
-
-#Preview {
-    DailyItemView()
 }
