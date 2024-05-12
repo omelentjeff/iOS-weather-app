@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ContainerView: View {
-    @State private var isSplashScreenViewPresented = true
+    @State private var isSplashScreenViewPresented = false
     
     var body: some View {
         if !isSplashScreenViewPresented {
-            ContentView()
+            ZStack {
+                Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
+                ContentView()
+            }
         } else {
             SplashScreenView(isPresented: $isSplashScreenViewPresented)
         }
