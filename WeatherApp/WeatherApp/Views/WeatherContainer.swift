@@ -10,11 +10,12 @@ import CoreLocation
 
 struct WeatherContainer: View {
     var coordinates: CLLocationCoordinate2D
+    var item: Item
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                CurrentWeatherView(coordinates: coordinates)
+                CurrentWeatherView(coordinates: coordinates, item: item)
                 HourlyWeatherView().padding(.bottom, 20)
                 SevenDayForecastView()
             }
