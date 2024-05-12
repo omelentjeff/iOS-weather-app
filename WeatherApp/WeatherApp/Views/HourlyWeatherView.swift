@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HourlyWeatherView: View {
     var body: some View {
-        GroupBox {
+        GroupBox("Hourly") {
+            Divider()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {
                     ForEach(1...20, id: \.self) { _ in
@@ -17,6 +18,6 @@ struct HourlyWeatherView: View {
                     }
                 }
             }
-        }.frame(width: 320, height: 120).backgroundStyle(.blue.opacity(0.2))
+        }.frame(width: 340).backgroundStyle(.blue.opacity(0.3))
     }
 }
