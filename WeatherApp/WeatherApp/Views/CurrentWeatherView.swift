@@ -13,8 +13,11 @@ struct CurrentWeatherView: View {
     
     var body: some View {
         VStack() {
-            Text("Pirkkala").font(.system(size: 32)).padding(.top, 10)
-            Text("9°").font(.system(size: 64)).fontWeight(.light)
+            Text("Pirkkala").font(.system(size: 32)).padding(10)
+            HStack {
+                Text("9°").font(.system(size: 64)).fontWeight(.light).padding(.trailing, 10)
+                Image(systemName: "sun.max.fill").font(.system(size: 50)).foregroundStyle(.yellow)
+            }
         }
     }
 }
