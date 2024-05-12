@@ -12,11 +12,9 @@ struct CurrentWeatherView: View {
     var coordinates: CLLocationCoordinate2D
     
     var body: some View {
-        Text("Pirkkala").font(.system(size: 32)).foregroundStyle(.blue).padding()
-        Text("Weather Now")
-        VStack {
-            Text("Your coordinates are: ")
-            Text("Lat: \(coordinates.latitude), Lon: \(coordinates.longitude)")
-        }.padding()
+        VStack() {
+            Text("Pirkkala").font(.system(size: 32)).padding(.top, 10)
+            Text("9°").font(.system(size: 64)).fontWeight(.light)
+        }
     }
 }
