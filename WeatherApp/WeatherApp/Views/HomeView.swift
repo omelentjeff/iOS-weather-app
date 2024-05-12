@@ -18,6 +18,9 @@ struct HomeView: View {
                 HStack {
                     ForEach(MockData.items) { item in
                         WeatherContainer(coordinates: viewModel.coordinates, item: item).containerRelativeFrame(.horizontal, count: 1, spacing: 10)
+                            .scrollTransition {content, phase in
+                                content.opacity(phase.isIdentity ? 1.0 : 0.4)
+                            }
                     }
                 }.onAppear {
                     viewModel.checkIfLocationServicesIsEnabled()
