@@ -10,7 +10,7 @@ import SwiftUI
 struct DailyItemView: View {
     let isSelected: Bool
     let buttonAction: () -> Void
-    @State private var rotationAngle = Angle(degrees: 180)
+    @State private var rotationAngle = Angle(degrees: 0)
     
     var body: some View {
         HStack {
@@ -19,12 +19,11 @@ struct DailyItemView: View {
             Spacer()
             Text("9°")
             Button(action: {
-                withAnimation(.easeInOut(duration: 0.3)) {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     self.buttonAction()
-                    rotationAngle += isSelected ? Angle(degrees: -180) : Angle(degrees: 180)
                 }
             }) {
-               Image(systemName: "chevron.up").rotationEffect(rotationAngle)
+                Image(systemName: "chevron.down").rotationEffect(isSelected ? .degrees(-180) : .degrees(0))
             }.padding(.leading, 30)
         }.padding()
     }

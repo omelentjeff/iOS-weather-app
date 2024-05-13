@@ -17,14 +17,16 @@ struct SevenDayForecastView: View {
                 ForEach(1...20, id: \.self) { index in
                     Divider()
                     DailyItemView(isSelected: selectedDailyIndex == index, buttonAction: {
-                        if self.selectedDailyIndex == index {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            if self.selectedDailyIndex == index {
                                 self.selectedDailyIndex = nil
                                 self.isHourlyViewVisible = false
                             } else {
                                 self.selectedDailyIndex = index
                                 self.isHourlyViewVisible = true
                             }
-                    }).scaleEffect(self.selectedDailyIndex == index ? 1.1 : 1.0)
+                        }
+                    }).padding().scaleEffect(self.selectedDailyIndex == index ? 1.1 : 1.0)
                     
                     if selectedDailyIndex == index {
                         if isHourlyViewVisible {
@@ -32,7 +34,7 @@ struct SevenDayForecastView: View {
                         }
                     }
                 }
-            }.backgroundStyle(.blue.opacity(0.3)).frame(width: 340)
+            }//.backgroundStyle(.blue.opacity(0.3)).frame(width: 340)
         }
     }
 }
