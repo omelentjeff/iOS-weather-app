@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DailyItemView: View {
+    let isSelected: Bool
+    
     var body: some View {
         HStack {
             Text("la").padding(.trailing, 20)
