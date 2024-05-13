@@ -14,20 +14,22 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             Rectangle().foregroundStyle(.blue.opacity(0.2))
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(MockData.items) { item in
-                        WeatherContainer(coordinates: viewModel.coordinates, item: item).containerRelativeFrame(.horizontal, count: 1, spacing: 10)
-                            .scrollTransition {content, phase in
-                                content.opacity(phase.isIdentity ? 1.0 : 0.4)
+                TabView {
+                    ForEach(MockData.items.indices) { index in
+                        let item = MockData.items[index]
+                        WeatherContainer(coordinates: viewModel.coordinates, item: item)
+                            // Set custom icon for the first page
+                            .tabItem {
+                                if index == 0 {
+                                    Image(systemName: "location")
+                                }
                             }
                     }
-                }.onAppear {
+                }.tabViewStyle(.page(indexDisplayMode: .always)) .onAppear {
                     viewModel.checkIfLocationServicesIsEnabled()
-                }.scrollTargetLayout()
-            }.scrollTargetBehavior(.viewAligned)
+                }
+            }
         }
-    }
 }
 
 struct Item: Identifiable {
