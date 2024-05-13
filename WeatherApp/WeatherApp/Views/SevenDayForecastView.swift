@@ -24,7 +24,7 @@ struct SevenDayForecastView: View {
                                 self.selectedDailyIndex = index
                                 self.isHourlyViewVisible = true
                             }
-                    })
+                    }).scaleEffect(self.selectedDailyIndex == index ? 1.1 : 1.0)
                     
                     if selectedDailyIndex == index {
                         if isHourlyViewVisible {
