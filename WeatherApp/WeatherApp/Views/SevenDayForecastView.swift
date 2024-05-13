@@ -14,18 +14,15 @@ struct SevenDayForecastView: View {
             GroupBox("7 Days") {
                 ForEach(1...20, id: \.self) { index in
                     Divider()
-                    Button(action: {
-                        withAnimation {
-                            selectedDailyIndex = selectedDailyIndex == index ? nil : index
-                        }
-                    }) {
-                        DailyItemView(isSelected: selectedDailyIndex == index)
+                    DailyItemView(isSelected: selectedDailyIndex == index).onTapGesture {
+                        selectedDailyIndex = selectedDailyIndex == index ? nil : index
                     }
+                    
                     if selectedDailyIndex == index {
-                        HourlyWeatherView().background()
+                        HourlyWeatherView()
                     }
                 }
             }.backgroundStyle(.blue.opacity(0.3)).frame(width: 340)
-        }.padding(.bottom, 20)
+        }
     }
 }
