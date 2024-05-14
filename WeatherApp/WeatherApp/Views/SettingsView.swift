@@ -5,15 +5,18 @@ struct SettingsView: View {
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     
     var body: some View {
-        VStack {
-            Text("Choose theme")
-
-            HStack {
-                Toggle(isOn: $isDarkMode) {
-                    Text("Dark Mode")
-                }
-            }.padding()
-            Spacer()
+        ZStack {
+            Rectangle().foregroundStyle(.blue.opacity(0.2))
+            VStack {
+                Text("Choose theme")
+                
+                HStack {
+                    Toggle(isOn: $isDarkMode) {
+                        Text("Dark Mode")
+                    }
+                }.padding()
+                Spacer()
+            }
         }
     }
 }
