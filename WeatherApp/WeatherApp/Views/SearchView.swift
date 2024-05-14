@@ -16,19 +16,22 @@ struct SearchView: View {
     @State private var submittedText = ""
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "magnifyingglass")
-                TextField("Search for a city...", text: $searchText).onSubmit {
-                    submitSearch()
-                }.textFieldStyle(OvalTextFieldStyle())
-            }.padding()
-            
-            Spacer()
-            Text(submittedText)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                        Spacer()
+        ZStack {
+            Rectangle().foregroundStyle(.blue.opacity(0.2))
+            VStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField("Search for a city...", text: $searchText).onSubmit {
+                        submitSearch()
+                    }.textFieldStyle(OvalTextFieldStyle())
+                }.padding()
+                
+                Spacer()
+                Text(submittedText)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                Spacer()
+            }
         }
     }
     
