@@ -34,7 +34,7 @@ struct SevenDayForecastView: View {
                         }
                     }
                 }
-            }//.backgroundStyle(.blue.opacity(0.3)).frame(width: 340)
+            }.backgroundStyle(.blue.opacity(0.2))//.frame(width: 340)
         }
     }
 }
