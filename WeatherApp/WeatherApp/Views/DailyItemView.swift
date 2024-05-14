@@ -19,11 +19,11 @@ struct DailyItemView: View {
             Spacer()
             Text("9°")
             Button(action: {
-                withAnimation(.easeInOut(duration: 0.2)) {
+                withAnimation(.easeInOut(duration: 0.3)) {
                     self.buttonAction()
                 }
             }) {
-                Image(systemName: "chevron.right").rotationEffect(isSelected ? .degrees(90) : .degrees(0))
+                Image(systemName: "chevron.down").rotationEffect(isSelected ? .degrees(180) : .degrees(0))
             }.padding(.leading, 30)
         }.padding()
     }

@@ -26,7 +26,7 @@ struct SevenDayForecastView: View {
                                 self.isHourlyViewVisible = true
                             }
                         }
-                    }).padding().scaleEffect(self.selectedDailyIndex == index ? 1.1 : 1.0)
+                    }).padding()
                     
                     if selectedDailyIndex == index {
                         if isHourlyViewVisible {
