@@ -9,9 +9,12 @@ import SwiftUI
 
 struct FavoritesView: View {
     var body: some View {
-        VStack {
-            Text("Favorites").padding(.top, 20).font(.system(size: 24)).bold()
-            Spacer()
+        ZStack {
+            Rectangle().foregroundStyle(.blue.opacity(0.2))
+            VStack {
+                Text("Favorites").padding(.top, 20).font(.system(size: 24)).bold()
+                Spacer()
+            }
         }
     }
 }
