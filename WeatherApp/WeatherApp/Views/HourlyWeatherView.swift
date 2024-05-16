@@ -13,16 +13,16 @@ struct HourlyWeatherView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if !isEmbedded {
-                Text("24h").font(.system(size: 20))
+                Text("24h").font(.system(size: 22))
             }
             Divider()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {
                     ForEach(1...20, id: \.self) { _ in
-                        HourlyItemView()
+                        HourlyItemView(isEmbedded: isEmbedded)
                     }
                 }
             }
-        }.padding(isEmbedded ? 5 : 25)
+        }.padding(isEmbedded ? 5 : 20)
     }
 }
