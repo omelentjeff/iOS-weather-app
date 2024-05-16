@@ -30,7 +30,7 @@ struct SevenDayForecastView: View {
                                     self.activeRowIndex = index
                                 }
                             }
-                        }).padding()
+                        }).padding(10)
                         
                         if selectedDailyIndex == index {
                             if isHourlyViewVisible {
