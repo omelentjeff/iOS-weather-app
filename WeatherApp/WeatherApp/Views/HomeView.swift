@@ -9,7 +9,8 @@ import SwiftUI
 import CoreLocation
 
 struct HomeView: View {
-    @StateObject private var viewModel = LocationViewModel()
+    //@StateObject private var viewModel = LocationViewModel()
+    var coordinates: CLLocationCoordinate2D
     
     var body: some View {
         ZStack {
@@ -17,7 +18,7 @@ struct HomeView: View {
                 TabView {
                     ForEach(MockData.items.indices) { index in
                         let item = MockData.items[index]
-                        WeatherContainer(coordinates: viewModel.coordinates, item: item)
+                        WeatherContainer(coordinates: coordinates, item: item)
                             // Set custom icon for the first page
                             .tabItem {
                                 if index == 0 {
@@ -25,9 +26,7 @@ struct HomeView: View {
                                 }
                             }
                     }
-                }.tabViewStyle(.page(indexDisplayMode: .always)) .onAppear {
-                    viewModel.checkIfLocationServicesIsEnabled()
-                }
+                }.tabViewStyle(.page(indexDisplayMode: .always))
             }
         }
 }

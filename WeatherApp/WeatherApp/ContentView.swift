@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = LocationViewModel()
+    
     var body: some View {
         VStack {
             //TitleView()
             Spacer()
             TabView {
-                HomeView()
+                HomeView(coordinates: viewModel.coordinates)
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
@@ -21,7 +23,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
-                MapView()
+                MapView(coordinates: viewModel.coordinates)
                     .tabItem {
                         Label("Map", systemImage: "map")
                     }
@@ -34,6 +36,8 @@ struct ContentView: View {
                         Label("Settings", systemImage: "gearshape")
                     }
             }
+        }.onAppear {
+            viewModel.checkIfLocationServicesIsEnabled()
         }
     }
 }
