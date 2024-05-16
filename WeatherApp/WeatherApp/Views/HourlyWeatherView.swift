@@ -15,7 +15,9 @@ struct HourlyWeatherView: View {
             if !isEmbedded {
                 Text("24h").font(.system(size: 22))
             }
-            Divider()
+            if !isEmbedded {
+                Divider()
+            }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {
                     ForEach(1...20, id: \.self) { _ in
