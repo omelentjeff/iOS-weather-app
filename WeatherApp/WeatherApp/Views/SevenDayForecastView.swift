@@ -10,29 +10,34 @@ import SwiftUI
 struct SevenDayForecastView: View {
     @State private var selectedDailyIndex: Int? = nil
     @State private var isHourlyViewVisible: Bool = false
+    @State private var activeRowIndex: Int? = nil
     
     var body: some View {
         ScrollView {
             GroupBox("7 Days") {
                 ForEach(1...20, id: \.self) { index in
-                    Divider()
-                    DailyItemView(isSelected: selectedDailyIndex == index, buttonAction: {
-                        withAnimation(.easeInOut(duration: 0.2)) {
-                            if self.selectedDailyIndex == index {
-                                self.selectedDailyIndex = nil
-                                self.isHourlyViewVisible = false
-                            } else {
-                                self.selectedDailyIndex = index
-                                self.isHourlyViewVisible = true
+                    VStack {
+                        Divider()
+                        DailyItemView(isSelected: selectedDailyIndex == index, buttonAction: {
+                            withAnimation(.easeInOut(duration: 0.2)) {
+                                if self.selectedDailyIndex == index {
+                                    self.selectedDailyIndex = nil
+                                    self.isHourlyViewVisible = false
+                                    self.activeRowIndex = nil
+                                } else {
+                                    self.selectedDailyIndex = index
+                                    self.isHourlyViewVisible = true
+                                    self.activeRowIndex = index
+                                }
+                            }
+                        }).padding()
+                        
+                        if selectedDailyIndex == index {
+                            if isHourlyViewVisible {
+                                HourlyWeatherView(isEmbedded: true)
                             }
                         }
-                    }).padding()
-                    
-                    if selectedDailyIndex == index {
-                        if isHourlyViewVisible {
-                            HourlyWeatherView(isEmbedded: true)
-                        }
-                    }
+                    }.padding().background(index == activeRowIndex && isHourlyViewVisible ? Color.blue.opacity(0.2) : Color.clear).clipShape(RoundedRectangle(cornerRadius: 30))
                 }
             }.backgroundStyle(.blue.opacity(0.2))//.frame(width: 340)
         }
