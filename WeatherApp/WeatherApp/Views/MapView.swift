@@ -23,11 +23,6 @@ struct MapView: View {
     var body: some View {
         MapReader { proxy in
             Map(initialPosition: position).ignoresSafeArea()
-                .onTapGesture { position in
-                    if let coordinate = proxy.convert(position, from: .local) {
-                        print(coordinate)
-                    }
-                }
         }
     }
 }

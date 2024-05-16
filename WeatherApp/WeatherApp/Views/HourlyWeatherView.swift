@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HourlyWeatherView: View {
     var body: some View {
-        GroupBox("24h") {
+        VStack(alignment: .leading) {
+            Text("24h")
             Divider()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {
@@ -18,6 +19,6 @@ struct HourlyWeatherView: View {
                     }
                 }
             }
-        }.frame(width: 340).backgroundStyle(.blue.opacity(0.3))
+        }.padding(15)
     }
 }
