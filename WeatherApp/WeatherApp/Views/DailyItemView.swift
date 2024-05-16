@@ -14,10 +14,10 @@ struct DailyItemView: View {
     
     var body: some View {
         HStack {
-            Text("la")
-            Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).padding(.bottom, 5)
+            Text("La").font(.system(size: 20))
+            Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
-            Text("9°")
+            Text("9°").font(.system(size: 18))
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
                     self.buttonAction()

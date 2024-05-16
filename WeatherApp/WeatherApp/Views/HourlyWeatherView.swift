@@ -12,7 +12,7 @@ struct HourlyWeatherView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("24h").font(.system(size: isEmbedded ? 14 : 20))
+            Text("24h").font(.system(size: isEmbedded ? 16 : 20))
             Divider()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {

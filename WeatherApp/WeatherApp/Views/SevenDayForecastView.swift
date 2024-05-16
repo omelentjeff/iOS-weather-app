@@ -18,6 +18,7 @@ struct SevenDayForecastView: View {
                 ForEach(1...20, id: \.self) { index in
                     VStack {
                         Divider()
+                        Spacer()
                         DailyItemView(isSelected: selectedDailyIndex == index, buttonAction: {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 if self.selectedDailyIndex == index {
@@ -30,7 +31,7 @@ struct SevenDayForecastView: View {
                                     self.activeRowIndex = index
                                 }
                             }
-                        }).padding(10)
+                        }).padding(.top, isHourlyViewVisible ? 0 : 20)
                         
                         if selectedDailyIndex == index {
                             if isHourlyViewVisible {
