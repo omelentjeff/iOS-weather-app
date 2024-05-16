@@ -30,7 +30,7 @@ struct SevenDayForecastView: View {
                     
                     if selectedDailyIndex == index {
                         if isHourlyViewVisible {
-                            HourlyWeatherView()
+                            HourlyWeatherView(isEmbedded: true)
                         }
                     }
                 }

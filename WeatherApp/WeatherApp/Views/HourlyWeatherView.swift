@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HourlyWeatherView: View {
+    var isEmbedded: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text("24h")
+            Text("24h").font(.system(size: 20))
             Divider()
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 35) {
@@ -19,6 +21,6 @@ struct HourlyWeatherView: View {
                     }
                 }
             }
-        }.padding(15)
+        }.padding(isEmbedded ? 5 : 25)
     }
 }
