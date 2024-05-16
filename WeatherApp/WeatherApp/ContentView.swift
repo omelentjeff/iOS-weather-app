@@ -21,7 +21,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
-                SettingsView()
+                MapView()
                     .tabItem {
                         Label("Map", systemImage: "map")
                     }
