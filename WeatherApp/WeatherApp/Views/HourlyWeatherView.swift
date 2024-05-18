@@ -13,7 +13,7 @@ struct HourlyWeatherView: View {
     var body: some View {
         VStack(alignment: .leading) {
             if !isEmbedded {
-                Text("24h").font(.system(size: 22))
+                Text("24h").font(.system(size: 18))
             }
             if !isEmbedded {
                 Divider()

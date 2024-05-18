@@ -15,7 +15,7 @@ struct WeatherContainer: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
-                CurrentWeatherView(coordinates: coordinates, item: item)
+                CurrentWeatherView(coordinates: coordinates, item: item).padding(.bottom, 40)
                 HourlyWeatherView().padding(.bottom, 40)
                 SevenDayForecastView()
             }
