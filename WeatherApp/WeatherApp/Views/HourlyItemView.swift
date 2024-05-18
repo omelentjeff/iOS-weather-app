@@ -12,9 +12,9 @@ struct HourlyItemView: View {
     
     var body: some View {
         VStack {
-            Text("13").font(.system(size: isEmbedded ? 16 : 20)).padding(.bottom, 5).bold()
+            Text("13").font(.system(size: isEmbedded ? 16 : 18)).padding(.bottom, 5)
             Image(systemName: "sun.max.fill").font(.system(size: isEmbedded ? 16 : 20)).foregroundStyle(Color.yellow).padding(.bottom, 5)
-            Text("9°").font(.system(size: isEmbedded ? 16 : 20))
+            Text("9°").font(.system(size: isEmbedded ? 16 : 18)).bold()
         }
     }
 }
