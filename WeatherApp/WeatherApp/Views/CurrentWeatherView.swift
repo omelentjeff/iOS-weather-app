@@ -15,7 +15,7 @@ struct CurrentWeatherView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(item.title).font(.system(size: 22)).bold()
+                Text(item.title).font(.system(size: 20))
                 Spacer()
                 VStack(spacing: 5) {
                     Text(getFormattedDate()).font(.system(size: 14))
@@ -23,8 +23,8 @@ struct CurrentWeatherView: View {
                 }
             }
             HStack {
-                Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5)
-                Image(systemName: item.icon).font(.system(size: 40)).foregroundStyle(.yellow)
+                Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5).bold()
+                Image(systemName: item.icon).font(.system(size: 40))//.foregroundStyle(.yellow)
                 Spacer()
             }
         }.padding()

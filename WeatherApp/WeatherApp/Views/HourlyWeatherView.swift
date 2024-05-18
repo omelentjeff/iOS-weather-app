@@ -19,7 +19,7 @@ struct HourlyWeatherView: View {
                 Divider()
             }
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 35) {
+                LazyHStack(spacing: 30) {
                     ForEach(1...20, id: \.self) { _ in
                         HourlyItemView(isEmbedded: isEmbedded)
                     }
