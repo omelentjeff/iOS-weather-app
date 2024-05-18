@@ -13,12 +13,13 @@ struct CurrentWeatherView: View {
     var item: Item
     
     var body: some View {
-        VStack() {
-            Text(item.title).font(.system(size: 32)).padding(10)
+        VStack(alignment: .leading, spacing: 10) {
+            Text(item.title).font(.system(size: 20)).bold()
             HStack {
-                Text(item.temp).font(.system(size: 64)).fontWeight(.light).padding(.trailing, 10)
-                Image(systemName: item.icon).font(.system(size: 50)).foregroundStyle(.yellow)
+                Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5)
+                Image(systemName: item.icon).font(.system(size: 40)).foregroundStyle(.yellow)
+                Spacer()
             }
-        }
+        }.padding()
     }
 }
