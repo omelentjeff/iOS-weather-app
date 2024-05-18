@@ -15,9 +15,12 @@ struct CurrentWeatherView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(item.title).font(.system(size: 20)).bold()
+                Text(item.title).font(.system(size: 22)).bold()
                 Spacer()
-                Text(getFormattedDate()).font(.system(size: 14))
+                VStack(spacing: 5) {
+                    Text(getFormattedDate()).font(.system(size: 14))
+                    Text(getWeekday()).font(.system(size: 12))
+                }
             }
             HStack {
                 Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5)
@@ -29,7 +32,13 @@ struct CurrentWeatherView: View {
 }
 
 func getFormattedDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: Date())
-    }
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd/MM/yyyy"
+    return dateFormatter.string(from: Date())
+}
+
+func getWeekday() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE"
+    return dateFormatter.string(from: Date())
+}
