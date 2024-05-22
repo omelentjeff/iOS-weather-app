@@ -15,7 +15,7 @@ struct CurrentWeatherView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text("\(weatherData.current.temperature2M)").font(.system(size: 20))
+                Text(String(format: "%.1f", weatherData.current.temperature2M)).font(.system(size: 20)).padding()
                 Spacer()
             }/*
               HStack {
