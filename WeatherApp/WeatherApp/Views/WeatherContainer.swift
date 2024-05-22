@@ -10,15 +10,19 @@ import CoreLocation
 
 struct WeatherContainer: View {
     var coordinates: CLLocationCoordinate2D
-    var item: Item
+    @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack {
-                CurrentWeatherView(coordinates: coordinates, item: item).padding(.bottom, 40)
-                HourlyWeatherView().padding(.bottom, 40)
-                SevenDayForecastView()
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    if let weatherData = viewModel.weatherData {
+                        CurrentWeatherView(coordinates: coordinates, weatherData: weatherData).padding(.bottom, 40)
+                        HourlyWeatherView().padding(.bottom, 40)
+                        SevenDayForecastView()
+                    } else {
+                        Text("Loading...")
+                    }
+                }
             }
         }
-    }
 }

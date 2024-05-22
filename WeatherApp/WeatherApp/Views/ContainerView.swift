@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct ContainerView: View {
-    @State private var isSplashScreenViewPresented = false
+    @State private var isSplashScreenViewPresented = true
+    @StateObject private var viewModel = WeatherViewModel()
     
     var body: some View {
-        if !isSplashScreenViewPresented {
-            ZStack {
-                Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
-                ContentView()
+        ZStack {
+            if !isSplashScreenViewPresented {
+                ZStack {
+                    Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
+                    ContentView(weatherViewModel: viewModel)
+                }
+            } else {
+                SplashScreenView(isPresented: $isSplashScreenViewPresented)
+                    .onAppear {
+                        // Fetch weather data in the background
+                        DispatchQueue.global().async {
+                            viewModel.fetchWeather()
+                            print("Loaded")
+                        }
+                    }
             }
-        } else {
-            SplashScreenView(isPresented: $isSplashScreenViewPresented)
         }
     }
 }

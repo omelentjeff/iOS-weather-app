@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = LocationViewModel()
+    @ObservedObject var weatherViewModel: WeatherViewModel
     
     var body: some View {
         VStack {
             //TitleView()
             Spacer()
             TabView {
-                HomeView(coordinates: viewModel.coordinates)
+                HomeView(viewModel: weatherViewModel)
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }

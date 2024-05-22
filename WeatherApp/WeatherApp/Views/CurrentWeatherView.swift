@@ -10,24 +10,21 @@ import CoreLocation
 
 struct CurrentWeatherView: View {
     var coordinates: CLLocationCoordinate2D
-    var item: Item
+    var weatherData: WeatherData
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(item.title).font(.system(size: 20))
+                Text("\(weatherData.current.temperature2M)").font(.system(size: 20))
                 Spacer()
-                VStack(spacing: 5) {
-                    Text(getFormattedDate()).font(.system(size: 14))
-                    Text(getWeekday()).font(.system(size: 12))
-                }
-            }
-            HStack {
-                Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5).bold()
-                Image(systemName: item.icon).font(.system(size: 40))//.foregroundStyle(.yellow)
-                Spacer()
-            }
-        }.padding()
+            }/*
+              HStack {
+              Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5).bold()
+              Image(systemName: item.icon).font(.system(size: 40))//.foregroundStyle(.yellow)
+              Spacer()
+              }
+              }.padding()*/
+        }
     }
 }
 

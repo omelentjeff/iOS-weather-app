@@ -9,24 +9,29 @@ import SwiftUI
 import CoreLocation
 
 struct HomeView: View {
-    //@StateObject private var viewModel = LocationViewModel()
-    var coordinates: CLLocationCoordinate2D
+    @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
-        ZStack {
-            Rectangle().foregroundStyle(.blue.opacity(0.2))
-                TabView {
-                    ForEach(MockData.items.indices) { index in
-                        let item = MockData.items[index]
-                        WeatherContainer(coordinates: coordinates, item: item)
-                            // Set custom icon for the first page
-                            .tabItem {
-                                if index == 0 {
-                                    Image(systemName: "location")
-                                }
+            ZStack {
+                Rectangle().foregroundStyle(.blue.opacity(0.2))
+                    TabView {
+                        ForEach(MockData.items.indices) { index in
+                            let item = MockData.items[index]
+                            if let weatherData = viewModel.weatherData {
+                                WeatherContainer(coordinates: CLLocationCoordinate2D(latitude: viewModel.latitude ?? 0, longitude: viewModel.longitude ?? 0), viewModel: viewModel)
+
+                                    .tabItem {
+                                        if index == 0 {
+                                            Image(systemName: "location")
+                                        }
+                                    }
+                            } else {
+                                Text("Loading...")
                             }
-                    }
-                }.tabViewStyle(.page(indexDisplayMode: .always))
+                        }
+                    }.tabViewStyle(.page(indexDisplayMode: .always))
+            }.onAppear {
+                viewModel.fetchWeather()
             }
         }
 }

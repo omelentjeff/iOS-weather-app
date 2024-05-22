@@ -38,7 +38,7 @@ struct SevenDayForecastView: View {
                                 HourlyWeatherView(isEmbedded: true)
                             }
                         }
-                    }.padding().background(index == activeRowIndex && isHourlyViewVisible ? Color.blue.opacity(0.2) : Color.clear).clipShape(RoundedRectangle(cornerRadius: 30))
+                    }.padding()//.background(index == activeRowIndex && isHourlyViewVisible ? Color.blue.opacity(0.2) : Color.clear).clipShape(RoundedRectangle(cornerRadius: 30))
                 }
             }.backgroundStyle(.blue.opacity(0.2))//.frame(width: 340)
         }

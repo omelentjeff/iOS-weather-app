@@ -18,9 +18,11 @@ class WeatherViewModel: ObservableObject {
         Task {
             do {
                 let weather = try await getWeather()
-                weatherData = weather
-                latitude = weather.latitude
-                longitude = weather.longitude
+                DispatchQueue.main.async {
+                    self.weatherData = weather
+                    self.latitude = weather.latitude
+                    self.longitude = weather.longitude
+                }
             } catch {
                 print(error)
             }

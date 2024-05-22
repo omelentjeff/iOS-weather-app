@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E83066392BEBC070002A6CB1 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83066382BEBC070002A6CB1 /* SplashScreenView.swift */; };
 		E830663B2BEBC07D002A6CB1 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830663A2BEBC07D002A6CB1 /* ContainerView.swift */; };
+		E83CF23D2BFE5CE60059D806 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83CF23C2BFE5CE60059D806 /* WeatherViewModel.swift */; };
+		E83CF2402BFE5DC60059D806 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83CF23F2BFE5DC60059D806 /* WeatherModel.swift */; };
 		E86444FC2BF66BE40006951D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86444FB2BF66BE40006951D /* MapView.swift */; };
 		E86B56E62BECEA1C00985213 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86B56E52BECEA1C00985213 /* LocationViewModel.swift */; };
 		E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E883BBE62BE7B1EA003A0CC1 /* WeatherAppApp.swift */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		E83066382BEBC070002A6CB1 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		E830663A2BEBC07D002A6CB1 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		E83CF23C2BFE5CE60059D806 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		E83CF23F2BFE5DC60059D806 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		E86444FB2BF66BE40006951D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		E86B56E52BECEA1C00985213 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		E883BBE32BE7B1EA003A0CC1 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,12 +70,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E86B56E42BECE9FF00985213 /* utils */ = {
+		E83CF23E2BFE5DBA0059D806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E83CF23F2BFE5DC60059D806 /* WeatherModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E86B56E42BECE9FF00985213 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E83CF23C2BFE5CE60059D806 /* WeatherViewModel.swift */,
 				E86B56E52BECEA1C00985213 /* LocationViewModel.swift */,
 			);
-			path = utils;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E883BBDA2BE7B1EA003A0CC1 = {
@@ -94,7 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				E883BBE62BE7B1EA003A0CC1 /* WeatherAppApp.swift */,
-				E86B56E42BECE9FF00985213 /* utils */,
+				E83CF23E2BFE5DBA0059D806 /* Models */,
+				E86B56E42BECE9FF00985213 /* ViewModels */,
 				E883BBF42BE7B22C003A0CC1 /* Views */,
 				E883BBE82BE7B1EA003A0CC1 /* ContentView.swift */,
 				E883BBEA2BE7B1EB003A0CC1 /* Assets.xcassets */,
@@ -209,10 +223,12 @@
 				E8E3F8912BEF8DBC00AB81C2 /* DailyItemView.swift in Sources */,
 				E8E3F88D2BEE9BB500AB81C2 /* HourlyWeatherView.swift in Sources */,
 				E8874B862BF11FD60030FB4A /* WeatherContainer.swift in Sources */,
+				E83CF23D2BFE5CE60059D806 /* WeatherViewModel.swift in Sources */,
 				E883BC082BEA833A003A0CC1 /* SevenDayForecastView.swift in Sources */,
 				E883BBE92BE7B1EA003A0CC1 /* ContentView.swift in Sources */,
 				E883BC062BEA824B003A0CC1 /* CurrentWeatherView.swift in Sources */,
 				E883BC042BEA3ABC003A0CC1 /* DarkModeViewModifier.swift in Sources */,
+				E83CF2402BFE5DC60059D806 /* WeatherModel.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
 				E883BBFE2BE7CC8D003A0CC1 /* FavoritesView.swift in Sources */,
 				E883BC022BE8D26A003A0CC1 /* HomeView.swift in Sources */,
