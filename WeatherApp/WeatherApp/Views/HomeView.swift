@@ -30,8 +30,6 @@ struct HomeView: View {
                             }
                         }
                     }.tabViewStyle(.page(indexDisplayMode: .always))
-            }.onAppear {
-                viewModel.fetchWeather()
             }
         }
 }

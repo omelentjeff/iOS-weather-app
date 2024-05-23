@@ -22,6 +22,7 @@ class WeatherViewModel: ObservableObject {
                     self.weatherData = weather
                     self.latitude = weather.latitude
                     self.longitude = weather.longitude
+                    print("Loaded")
                 }
             } catch {
                 print(error)

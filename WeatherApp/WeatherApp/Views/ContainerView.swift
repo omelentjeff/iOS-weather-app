@@ -24,7 +24,6 @@ struct ContainerView: View {
                         // Fetch weather data in the background
                         DispatchQueue.global().async {
                             viewModel.fetchWeather()
-                            print("Loaded")
                         }
                     }
             }
