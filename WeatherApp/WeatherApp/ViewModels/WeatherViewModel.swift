@@ -54,4 +54,10 @@ class WeatherViewModel: ObservableObject {
         print(hourlyTemps.prefix(24))
         return Array(hourlyTemps.prefix(24))
     }
+    
+    func getSevenDaysTemperatures() -> (maxTemperatures: [Double], minTemperatures: [Double]) {
+        guard let maxTemperature = weatherData?.daily.temperature2MMax,
+              let minTemperature = weatherData?.daily.temperature2MMin else { return ([], []) }
+        return (maxTemperature, minTemperature)
+    }
 }

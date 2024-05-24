@@ -18,7 +18,7 @@ struct WeatherContainer: View {
                     if let weatherData = viewModel.weatherData {
                         CurrentWeatherView(coordinates: coordinates, weatherData: weatherData).padding(.bottom, 40)
                         HourlyWeatherView(viewModel: viewModel).padding(.bottom, 40)
-                        //SevenDayForecastView()
+                        SevenDayForecastView(viewModel: viewModel)
                     } else {
                         Text("Loading...")
                     }

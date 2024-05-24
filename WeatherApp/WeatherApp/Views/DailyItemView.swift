@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DailyItemView: View {
+    let maxTemperature: Double
+    let minTemperature: Double
     let isSelected: Bool
     let buttonAction: () -> Void
     @State private var rotationAngle = Angle(degrees: 0)
@@ -17,7 +19,12 @@ struct DailyItemView: View {
             Text("La").font(.system(size: 20))
             Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
-            Text("9°").font(.system(size: 18))
+            VStack(spacing: 10) {
+                Text(String(format: "H: %.1f°", maxTemperature))
+                    .font(.system(size: 18))
+                Text(String(format: "L: %.1f°", minTemperature))
+                    .font(.system(size: 18))
+            }
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
                     self.buttonAction()

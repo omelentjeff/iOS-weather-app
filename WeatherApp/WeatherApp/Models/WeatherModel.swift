@@ -20,6 +20,7 @@ struct Current: Codable {
 }
 
 struct Daily: Codable {
+    let time: [String]
     let temperature2MMax: [Double]
     let temperature2MMin: [Double]
 }
