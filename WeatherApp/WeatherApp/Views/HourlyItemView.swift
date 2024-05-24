@@ -12,9 +12,11 @@ struct HourlyItemView: View {
     var isEmbedded: Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
+            Text("16")
+            Image(systemName: "sun.min")
             Text(String(format: "%.1f°", temperature))
-                .font(.system(size: isEmbedded ? 16 : 18))
+                .font(.system(size: isEmbedded ? 16 : 18)).bold()
         }
     }
 }

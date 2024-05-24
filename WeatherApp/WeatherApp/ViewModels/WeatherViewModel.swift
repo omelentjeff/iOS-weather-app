@@ -51,6 +51,7 @@ class WeatherViewModel: ObservableObject {
     
     func getNext24HoursTemperatures() -> [Double] {
         guard let hourlyTemps = weatherData?.hourly.temperature2M else { return [] }
+        print(hourlyTemps.prefix(24))
         return Array(hourlyTemps.prefix(24))
     }
 }
