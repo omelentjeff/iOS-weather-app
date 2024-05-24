@@ -24,10 +24,10 @@ struct ContentView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
-                MapView(coordinates: viewModel.coordinates)
+                /*MapView(coordinates: viewModel.coordinates)
                     .tabItem {
                         Label("Map", systemImage: "map")
-                    }
+                    }*/
                 FavoritesView()
                     .tabItem {
                         Label("Favorites", systemImage: "heart")

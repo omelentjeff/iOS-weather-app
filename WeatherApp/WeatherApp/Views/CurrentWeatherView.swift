@@ -13,17 +13,16 @@ struct CurrentWeatherView: View {
     var weatherData: WeatherData
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(String(format: "%.1f", weatherData.current.temperature2M)).font(.system(size: 20)).padding()
-                Spacer()
-            }/*
-              HStack {
-              Text(item.temp).font(.system(size: 56)).fontWeight(.light).padding(.trailing, 5).bold()
-              Image(systemName: item.icon).font(.system(size: 40))//.foregroundStyle(.yellow)
-              Spacer()
-              }
-              }.padding()*/
+        VStack(spacing: 20) {
+            Text("Pirkkala").font(.system(size: 22))
+            HStack(spacing: 10) {
+                Text(String(format: "%.1f°", weatherData.current.temperature2M)).font(.system(size: 50))
+                Image(systemName: "sun.max").font(.system(size: 40)).padding(.trailing, 20)//.foregroundStyle(.yellow)
+                VStack {
+                    Text("H: 25")
+                    Text("L: 10")
+                }
+            }
         }
     }
 }
