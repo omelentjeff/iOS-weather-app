@@ -12,7 +12,6 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherData: WeatherData?
     var latitude: Double?
     var longitude: Double?
-
     
     func fetchWeather() {
         Task {
@@ -48,5 +47,10 @@ class WeatherViewModel: ObservableObject {
         } catch {
             throw WeatherError.invalidData
         }
+    }
+    
+    func getNext24HoursTemperatures() -> [Double] {
+        guard let hourlyTemps = weatherData?.hourly.temperature2M else { return [] }
+        return Array(hourlyTemps.prefix(24))
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Otto Melentjeff on 7.5.2024.
 //
 
-import SwiftUI
+/*import SwiftUI
 
 struct SevenDayForecastView: View {
     @State private var selectedDailyIndex: Int? = nil
@@ -44,3 +44,4 @@ struct SevenDayForecastView: View {
         }
     }
 }
+*/

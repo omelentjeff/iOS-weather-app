@@ -12,6 +12,7 @@ struct WeatherData: Codable {
     let longitude: Double
     let current: Current
     let daily: Daily
+    let hourly: Hourly
 }
 
 struct Current: Codable {
@@ -21,6 +22,11 @@ struct Current: Codable {
 struct Daily: Codable {
     let temperature2MMax: [Double]
     let temperature2MMin: [Double]
+}
+
+struct Hourly: Codable {
+    let time: [String]
+    let temperature2M: [Double]
 }
 
 enum WeatherError: Error {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HourlyWeatherView: View {
+    @ObservedObject var viewModel: WeatherViewModel
     var isEmbedded: Bool = false
     
     var body: some View {
@@ -20,8 +21,8 @@ struct HourlyWeatherView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 30) {
-                    ForEach(1...20, id: \.self) { _ in
-                        HourlyItemView(isEmbedded: isEmbedded)
+                    ForEach(viewModel.getNext24HoursTemperatures(), id: \.self) { temperature in
+                        HourlyItemView(temperature: temperature)
                     }
                 }
             }
