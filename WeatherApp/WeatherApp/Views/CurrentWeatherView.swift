@@ -18,10 +18,17 @@ struct CurrentWeatherView: View {
             HStack(spacing: 10) {
                 Text(String(format: "%.1f°", weatherData.current.temperature2M)).font(.system(size: 50))
                 Image(systemName: "sun.max").font(.system(size: 40)).padding(.trailing, 20)//.foregroundStyle(.yellow)
-                VStack {
-                    Text("H: 25")
-                    Text("L: 10")
-                }
+                VStack(spacing: 5) {
+                   if let maxTemperature = weatherData.daily.temperature2MMax.first {
+                       Text(String(format: "H: %.1f°", maxTemperature))
+                           .font(.system(size: 20))
+                   }
+
+                   if let minTemperature = weatherData.daily.temperature2MMin.first {
+                       Text(String(format: "L: %.1f°", minTemperature))
+                           .font(.system(size: 20))
+                   }
+               }
             }
         }
     }
