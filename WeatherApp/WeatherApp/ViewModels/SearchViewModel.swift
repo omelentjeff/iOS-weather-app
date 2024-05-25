@@ -6,11 +6,40 @@
 //
 
 import SwiftUI
+import Combine
 
 class SearchViewModel: ObservableObject {
     @Published var searchData: SearchData?
+    @Published var currentValue: String
+    @Published var debouncedValue: String
+    
+    private var subscriber: AnyCancellable?
+    
+    init(initialValue: String, delay: Double = 0.3 ) {
+        _currentValue = Published(initialValue: initialValue)
+        _debouncedValue = Published(initialValue: initialValue)
+        subscriber = $currentValue
+            .debounce(for: .seconds(delay), scheduler: RunLoop.main)
+            .sink { [unowned self] value in
+                self.debouncedValue = value
+            }
+    }
+    
+    func setupSearchDebounce() {
+        debouncedValue = self.currentValue
+        $currentValue
+            .debounce(for: .seconds(0.75), scheduler: RunLoop.main)
+            .assign(to: &$debouncedValue)
+    }
+        
+      
     
     func fetchSearchResults(for query: String) {
+        if query.isEmpty {
+            self.searchData = nil
+            return
+        }
+        
         Task {
             do {
                 let search = try await getSearchResults(for: query)

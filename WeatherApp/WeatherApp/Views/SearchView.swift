@@ -14,40 +14,37 @@ struct SearchView: View {
       UITextField.appearance().clearButtonMode = .whileEditing
     }*/
     
-    @State private var searchText = ""
-    @State private var submittedText = ""
-    
     var body: some View {
-        ZStack {
-            Rectangle().foregroundStyle(.blue.opacity(0.2))
-            VStack {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField("Search for a city...", text: $searchText).onSubmit {
-                        submitSearch()
-                    }.textFieldStyle(OvalTextFieldStyle())
-                }.padding()
-                
-                Spacer()
-                ScrollView(.vertical, showsIndicators: true) {
-                    LazyVStack(spacing: 30) {
-                        if let searchData = viewModel.searchData?.results {
-                            ForEach(searchData, id: \.id) { item in
-                                SearchItemView(item: item)
-                            }
-                        }
-                    }
-                }
-            }
-                Spacer()
-            }
-        }
-    
-    private func submitSearch() {
-            submittedText = searchText
-            viewModel.fetchSearchResults(for: submittedText)
-            searchText = ""
-        }
+           NavigationStack {
+               VStack {
+                   HStack {
+                       Spacer()
+                       Image(systemName: "magnifyingglass")
+                       TextField("Search for a city...", text: $viewModel.currentValue)
+                           .onChange(of: viewModel.debouncedValue) { newValue in
+                               viewModel.fetchSearchResults(for: newValue)
+                           }
+                           .textFieldStyle(OvalTextFieldStyle())
+                           .padding()
+                   }
+                   
+                   Spacer()
+                   
+                   if let searchData = viewModel.searchData?.results, !searchData.isEmpty {
+                       List(searchData, id: \.id) { city in
+                           NavigationLink(destination: CityDetailView()) {
+                               Text(city.name)
+                           }
+                       }
+                   } else {
+                       Text(viewModel.debouncedValue.isEmpty ? "" : "No results found")
+                           .padding()
+                   }
+                   Spacer()
+               }
+               .navigationTitle("Search")
+           }
+       }
 }
 
 struct OvalTextFieldStyle: TextFieldStyle {

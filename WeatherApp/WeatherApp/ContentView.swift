@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = LocationViewModel()
     @ObservedObject var weatherViewModel: WeatherViewModel
-    @StateObject var searchViewModel = SearchViewModel()
+    @StateObject var searchViewModel = SearchViewModel(initialValue: "")
     
     var body: some View {
         VStack {
