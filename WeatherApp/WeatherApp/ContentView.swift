@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = LocationViewModel()
     @ObservedObject var weatherViewModel: WeatherViewModel
+    @StateObject var searchViewModel = SearchViewModel()
     
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
-                SearchView()
+                SearchView(viewModel: searchViewModel)
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }

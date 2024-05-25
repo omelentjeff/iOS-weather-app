@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SearchView: View {
-    init() {
+    @ObservedObject var viewModel: SearchViewModel
+    
+    /*init() {
       UITextField.appearance().clearButtonMode = .whileEditing
-    }
+    }*/
     
     @State private var searchText = ""
     @State private var submittedText = ""
@@ -27,16 +29,23 @@ struct SearchView: View {
                 }.padding()
                 
                 Spacer()
-                Text(submittedText)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                ScrollView(.vertical, showsIndicators: true) {
+                    LazyVStack(spacing: 30) {
+                        if let searchData = viewModel.searchData?.results {
+                            ForEach(searchData, id: \.id) { item in
+                                SearchItemView(item: item)
+                            }
+                        }
+                    }
+                }
+            }
                 Spacer()
             }
         }
-    }
     
     private func submitSearch() {
             submittedText = searchText
+            viewModel.fetchSearchResults(for: submittedText)
             searchText = ""
         }
 }

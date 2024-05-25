@@ -10,15 +10,13 @@ import SwiftUI
 class SearchViewModel: ObservableObject {
     @Published var searchData: SearchData?
     
-    func fetchSearchResults(for date: Date) {
-        print("Selected Date:", date)
-        
+    func fetchSearchResults(for query: String) {
         Task {
             do {
-                let search = try await getSearchResults()
+                let search = try await getSearchResults(for: query)
                 DispatchQueue.main.async {
                     self.searchData = search
-                    print("Loaded")
+                    print("Loaded search results")
                 }
             } catch {
                 print(error)
@@ -26,8 +24,8 @@ class SearchViewModel: ObservableObject {
         }
     }
     
-    func getSearchResults() async throws -> SearchData {
-        let endpoint = "https://geocoding-api.open-meteo.com/v1/search?name=tampere&count=10&language=en&format=json"
+    func getSearchResults(for query: String) async throws -> SearchData {
+        let endpoint = "https://geocoding-api.open-meteo.com/v1/search?name=\(query)&count=10&language=en&format=json"
         
         guard let url = URL(string: endpoint) else { throw SearchError.invalidURL }
         
@@ -36,6 +34,8 @@ class SearchViewModel: ObservableObject {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw SearchError.invalidResponse
         }
+        
+        print("Received data:", String(data: data, encoding: .utf8) ?? "Data could not be converted to UTF-8 string")
         
         do {
             let decoder = JSONDecoder()
