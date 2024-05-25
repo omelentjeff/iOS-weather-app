@@ -17,3 +17,9 @@ struct SearchResult: Codable {
     let latitude: Double
     let longitude: Double
 }
+
+enum SearchError: Error {
+    case invalidURL
+    case invalidResponse
+    case invalidData
+}
