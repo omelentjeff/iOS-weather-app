@@ -9,14 +9,14 @@ import SwiftUI
 
 struct HourlyItemView: View {
     var index: Int
-    var temperature: Double
+    var hourlyTemp: HourlyTemperature
     var isEmbedded: Bool = false
     
     var body: some View {
         VStack(spacing: 10) {
-            Text(index == 0 ? "Now" : "16")
+            Text(index == 0 ? "Now" : hourlyTemp.hour)
             Image(systemName: "sun.min")
-            Text(String(format: "%.1f°", temperature))
+            Text(String(format: "%.1f°", hourlyTemp.temperature))
                 .font(.system(size: isEmbedded ? 16 : 18)).bold()
         }
     }

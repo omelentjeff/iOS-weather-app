@@ -30,6 +30,11 @@ struct Hourly: Codable {
     let temperature2M: [Double]
 }
 
+struct HourlyTemperature {
+    let hour: String
+    let temperature: Double
+}
+
 enum WeatherError: Error {
     case invalidURL
     case invalidResponse

@@ -56,58 +56,29 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    /*func getNext24HoursTemperatures(for date: Date) -> [Double] {
-        guard let hourlyTemps = weatherData?.hourly.temperature2M,
-              let hourlyTimes = weatherData?.hourly.time else { return [] }
-        
-        /*for (index, timeString) in hourlyTimes.enumerated() {
-            print("Index: \(index), Date String: \(timeString)")
-        }*/
-        
-        let calendar = Calendar.current
-        let startOfDay = calendar.startOfDay(for: date)
-        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-        
-        let isoFormatter = ISO8601DateFormatter()
-        isoFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate, .withColonSeparatorInTime, .withTime]
-        
-        var next24HoursTemps: [Double] = []
-        
-        for (index, timeString) in hourlyTimes.enumerated() {
-            if let timeDate = isoFormatter.date(from: timeString),
-               timeDate >= startOfDay && timeDate < endOfDay {
-                print(timeDate)
-                next24HoursTemps.append(hourlyTemps[index])
-            } else {
-                //print("wrong")
-            }
-        }
-        
-        /*for (index, timeString) in hourlyTimes.enumerated() {
-            print("Index: \(index), Date String: \(type(of: timeString))")
-        }*/
-        
-        return next24HoursTemps
-    }*/
-    
-    func getNext24HoursTemperatures() -> [Double] {
+    func getNext24HoursTemperatures() -> [HourlyTemperature] {
         guard let hourlyTemps = weatherData?.hourly.temperature2M else { return [] }
         
-        // Find the index of the current hour
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
         let currentDateHourString = dateFormatter.string(from: Date())
         let currentDateString = currentDateHourString + ":00"
-        print("Current Date String: \(currentDateString)")
         
         weatherData?.hourly.time.forEach { print($0) }
         
         guard let currentIndex = weatherData?.hourly.time.firstIndex(of: currentDateString) else { return [] }
-        print("Current Index: \(currentIndex)")
         
-        let endIndex = min(currentIndex + 24, hourlyTemps.count)
-        let slicedTemps = Array(hourlyTemps[currentIndex..<endIndex])
-        return slicedTemps
+        var hourlyTemperatures: [HourlyTemperature] = []
+        
+        for i in currentIndex..<min(currentIndex + 24, hourlyTemps.count) {
+            let fullHourString = weatherData?.hourly.time[i] ?? ""
+            let hour = fullHourString.components(separatedBy: "T")[1].components(separatedBy: ":")[0]
+           let temperature = hourlyTemps[i]
+           let hourlyTemp = HourlyTemperature(hour: hour, temperature: temperature)
+           hourlyTemperatures.append(hourlyTemp)
+       }
+        
+        return hourlyTemperatures
     }
 
 
