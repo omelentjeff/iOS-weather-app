@@ -9,7 +9,12 @@ import SwiftUI
 
 struct HourlyWeatherView: View {
     @ObservedObject var viewModel: WeatherViewModel
+    var date: Date?
     var isEmbedded: Bool = false
+    
+    var isToday: Bool {
+        date == nil
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,9 +26,9 @@ struct HourlyWeatherView: View {
             }
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 30) {
-                    ForEach(viewModel.getNext24HoursTemperatures().indices, id: \.self) { index in
-                        let hourlyTemp = viewModel.getNext24HoursTemperatures()[index]
-                        HourlyItemView(index: index, hourlyTemp: hourlyTemp)
+                    ForEach(viewModel.getNext24HoursTemperatures(for: date).indices, id: \.self) { index in
+                        let hourlyTemp = viewModel.getNext24HoursTemperatures(for: date)[index]
+                        HourlyItemView(index: index, hourlyTemp: hourlyTemp, isToday: isToday)
                             .id(UUID())
                     }
                 }

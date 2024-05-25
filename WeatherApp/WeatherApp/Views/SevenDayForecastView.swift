@@ -48,7 +48,7 @@ struct SevenDayForecastView: View {
                         
                         if selectedDailyIndex == index {
                             if isHourlyViewVisible {
-                                HourlyWeatherView(viewModel: viewModel, isEmbedded: true)
+                                HourlyWeatherView(viewModel: viewModel, date: dates[index], isEmbedded: true)
                             }
                         }
                     }.padding()//.background(index == activeRowIndex && isHourlyViewVisible ? Color.blue.opacity(0.2) : Color.clear).clipShape(RoundedRectangle(cornerRadius: 30))

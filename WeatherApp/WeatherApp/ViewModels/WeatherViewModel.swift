@@ -56,12 +56,18 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func getNext24HoursTemperatures() -> [HourlyTemperature] {
+    func getNext24HoursTemperatures(for date: Date? = nil) -> [HourlyTemperature] {
         guard let hourlyTemps = weatherData?.hourly.temperature2M else { return [] }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
-        let currentDateHourString = dateFormatter.string(from: Date())
+        
+        var currentDate = Date()
+        if let selectedDate = date {
+            currentDate = selectedDate
+        }
+        
+        let currentDateHourString = dateFormatter.string(from: currentDate)
         let currentDateString = currentDateHourString + ":00"
         
         weatherData?.hourly.time.forEach { print($0) }
