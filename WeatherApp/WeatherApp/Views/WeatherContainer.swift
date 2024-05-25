@@ -22,6 +22,10 @@ struct WeatherContainer: View {
                     } else {
                         Text("Loading...")
                     }
+                }.onAppear {
+                    DispatchQueue.main.async {
+                        viewModel.fetchWeather(for: Date(), coordinates: coordinates)
+                    }
                 }
             }
         }

@@ -6,24 +6,26 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContainerView: View {
+    @StateObject private var viewModel = LocationViewModel()
     @State private var isSplashScreenViewPresented = true
-    @StateObject private var viewModel = WeatherViewModel()
+    @StateObject private var weatherViewModel = WeatherViewModel()
     
     var body: some View {
         ZStack {
             if !isSplashScreenViewPresented {
                 ZStack {
                     Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
-                    ContentView(weatherViewModel: viewModel)
+                    ContentView(weatherViewModel: weatherViewModel)
                 }
             } else {
                 SplashScreenView(isPresented: $isSplashScreenViewPresented)
                     .onAppear {
                         // Fetch weather data in the background
                         DispatchQueue.global().async {
-                            viewModel.fetchWeather(for: Date())
+                            weatherViewModel.fetchWeather(for: Date(), coordinates: CLLocationCoordinate2D(latitude: 23, longitude: 62))
                         }
                     }
             }

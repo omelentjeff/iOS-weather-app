@@ -21,7 +21,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
-                SearchView(viewModel: searchViewModel)
+                SearchView(searchViewModel: searchViewModel, weatherViewModel: weatherViewModel)
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }

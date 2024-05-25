@@ -16,6 +16,7 @@ struct SearchResult: Codable {
     let name: String
     let latitude: Double
     let longitude: Double
+    let country: String
 }
 
 enum SearchError: Error {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 
 class WeatherViewModel: ObservableObject {
@@ -15,10 +16,10 @@ class WeatherViewModel: ObservableObject {
     var latitude: Double?
     var longitude: Double?
     
-    func fetchWeather(for date: Date) {
+    func fetchWeather(for date: Date, coordinates: CLLocationCoordinate2D) {
         Task {
             do {
-                let weather = try await getWeather()
+                let weather = try await getWeather(coordinates: coordinates)
                 DispatchQueue.main.async {
                     self.weatherData = weather
                     self.selectedDate = date
@@ -30,8 +31,8 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func getWeather() async throws -> WeatherData {
-        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=61.4991&longitude=23.7871&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
+    func getWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherData {
+        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
         
         guard let url = URL(string: endpoint) else { throw WeatherError.invalidURL }
         
@@ -93,11 +94,5 @@ class WeatherViewModel: ObservableObject {
            let dates = dateStringArray.compactMap { dateFormatter.date(from: $0) }
         
         return (dates, maxTemperature, minTemperature)
-    }
-    
-    func updateDate(for date: Date) {
-        if let selectedDate = selectedDate {
-            fetchWeather(for: selectedDate)
-        }
     }
 }

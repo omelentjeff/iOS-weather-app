@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel: SearchViewModel
+    @ObservedObject var searchViewModel: SearchViewModel
+    @ObservedObject var weatherViewModel: WeatherViewModel
     
     /*init() {
       UITextField.appearance().clearButtonMode = .whileEditing
@@ -20,9 +21,9 @@ struct SearchView: View {
                    HStack {
                        Spacer()
                        Image(systemName: "magnifyingglass")
-                       TextField("Search for a city...", text: $viewModel.currentValue)
-                           .onChange(of: viewModel.debouncedValue) { newValue in
-                               viewModel.fetchSearchResults(for: newValue)
+                       TextField("Search for a city...", text: $searchViewModel.currentValue)
+                           .onChange(of: searchViewModel.debouncedValue) { newValue in
+                               searchViewModel.fetchSearchResults(for: newValue)
                            }
                            .textFieldStyle(OvalTextFieldStyle())
                            .padding()
@@ -30,14 +31,16 @@ struct SearchView: View {
                    
                    Spacer()
                    
-                   if let searchData = viewModel.searchData?.results, !searchData.isEmpty {
+                   if let searchData = searchViewModel.searchData?.results, !searchData.isEmpty {
                        List(searchData, id: \.id) { city in
-                           NavigationLink(destination: CityDetailView()) {
-                               Text(city.name)
+                           if let weatherData = weatherViewModel.weatherData {
+                               NavigationLink(destination: CityDetailView(city: city, viewModel: weatherViewModel)) {
+                                   Text("\(city.name), \(city.country)")
+                               }
                            }
                        }
                    } else {
-                       Text(viewModel.debouncedValue.isEmpty ? "" : "No results found")
+                       Text(searchViewModel.debouncedValue.isEmpty ? "" : "No results found")
                            .padding()
                    }
                    Spacer()

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SearchItemView: View {
-    var item: SearchResult
+    var city: SearchResult
     
     var body: some View {
         HStack {
-            Text(item.name)
+            Text(city.name)
         }
     }
 }

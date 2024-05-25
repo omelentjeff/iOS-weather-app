@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct CityDetailView: View {
+    var city: SearchResult
+    @ObservedObject var viewModel: WeatherViewModel
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            WeatherContainer(coordinates: CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude), viewModel: viewModel)
+        }
     }
 }
