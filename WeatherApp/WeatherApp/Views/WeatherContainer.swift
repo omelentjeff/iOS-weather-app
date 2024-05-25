@@ -16,7 +16,7 @@ struct WeatherContainer: View {
             ScrollView(showsIndicators: false) {
                 VStack {
                     if let weatherData = viewModel.weatherData {
-                        CurrentWeatherView(coordinates: coordinates, weatherData: weatherData).padding(.bottom, 40)
+                        CurrentWeatherView(weatherData: weatherData).padding(.bottom, 40)
                         HourlyWeatherView(viewModel: viewModel).padding(.bottom, 40)
                         SevenDayForecastView(viewModel: viewModel)
                     } else {

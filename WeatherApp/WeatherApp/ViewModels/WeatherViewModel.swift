@@ -20,7 +20,7 @@ class WeatherViewModel: ObservableObject {
         
         Task {
             do {
-                let weather = try await getWeather(for: date)
+                let weather = try await getWeather()
                 DispatchQueue.main.async {
                     self.weatherData = weather
                     self.selectedDate = date
@@ -32,12 +32,8 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
-    func getWeather(for date: Date) async throws -> WeatherData {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter.string(from: date)
-        
-        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=61.4991&longitude=23.7871&current_date=\(dateString)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
+    func getWeather() async throws -> WeatherData {
+        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=61.4991&longitude=23.7871&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
         
         guard let url = URL(string: endpoint) else { throw WeatherError.invalidURL }
         

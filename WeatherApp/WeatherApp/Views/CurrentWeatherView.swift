@@ -9,7 +9,6 @@ import SwiftUI
 import CoreLocation
 
 struct CurrentWeatherView: View {
-    var coordinates: CLLocationCoordinate2D
     var weatherData: WeatherData
     
     var body: some View {
@@ -21,12 +20,12 @@ struct CurrentWeatherView: View {
                 VStack(spacing: 5) {
                    if let maxTemperature = weatherData.daily.temperature2MMax.first {
                        Text(String(format: "H: %.1f°", maxTemperature))
-                           .font(.system(size: 20))
+                           .font(.system(size: 16))
                    }
 
                    if let minTemperature = weatherData.daily.temperature2MMin.first {
                        Text(String(format: "L: %.1f°", minTemperature))
-                           .font(.system(size: 20))
+                           .font(.system(size: 16))
                    }
                }
             }
