@@ -16,8 +16,6 @@ class WeatherViewModel: ObservableObject {
     var longitude: Double?
     
     func fetchWeather(for date: Date) {
-        print("Selected Date:", date)
-        
         Task {
             do {
                 let weather = try await getWeather()
@@ -65,8 +63,6 @@ class WeatherViewModel: ObservableObject {
         
         let currentDateHourString = dateFormatter.string(from: currentDate)
         let currentDateString = currentDateHourString + ":00"
-        
-        weatherData?.hourly.time.forEach { print($0) }
         
         guard let currentIndex = weatherData?.hourly.time.firstIndex(of: currentDateString) else { return [] }
         

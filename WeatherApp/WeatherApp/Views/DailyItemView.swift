@@ -20,10 +20,10 @@ struct DailyItemView: View {
             Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
             HStack(spacing: 10) {
-                Text(String(format: "H: %.1f°", maxTemperature))
-                    .font(.system(size: 18))
-                Text(String(format: "L: %.1f°", minTemperature))
-                    .font(.system(size: 18))
+                Text(String(format: "H: %.0f°", maxTemperature))
+                    .font(.system(size: 16))
+                Text(String(format: "L: %.0f°", minTemperature))
+                    .font(.system(size: 16))
             }
             Button(action: {
                 withAnimation(.easeInOut(duration: 0.3)) {
