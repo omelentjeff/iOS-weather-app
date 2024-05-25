@@ -22,11 +22,12 @@ struct SevenDayForecastView: View {
     var body: some View {
         ScrollView {
             GroupBox("7 Days") {
-                let temperaturesTuple = viewModel.getSevenDaysTemperatures()
+                let temperatures = viewModel.getSevenDaysTemperatures()
                 
                 ForEach(0..<7, id: \.self) { index in
-                    let maxTemperatures = temperaturesTuple.maxTemperatures
-                    let minTemperatures = temperaturesTuple.minTemperatures
+                    let maxTemperatures = temperatures.maxTemperatures
+                    let minTemperatures = temperatures.minTemperatures
+                    let dates = temperatures.dates
                     
                     VStack {
                         Divider()

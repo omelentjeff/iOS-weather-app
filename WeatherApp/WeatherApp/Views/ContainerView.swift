@@ -23,7 +23,7 @@ struct ContainerView: View {
                     .onAppear {
                         // Fetch weather data in the background
                         DispatchQueue.global().async {
-                            viewModel.fetchWeather()
+                            viewModel.fetchWeather(for: Date())
                         }
                     }
             }

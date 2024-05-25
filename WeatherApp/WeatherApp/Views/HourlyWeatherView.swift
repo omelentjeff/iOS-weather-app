@@ -23,7 +23,7 @@ struct HourlyWeatherView: View {
                 LazyHStack(spacing: 30) {
                     ForEach(viewModel.getNext24HoursTemperatures().indices, id: \.self) { index in
                         let temperature = viewModel.getNext24HoursTemperatures()[index]
-                        HourlyItemView(temperature: temperature)
+                        HourlyItemView(index: index, temperature: temperature)
                             .id(UUID())
                     }
                 }

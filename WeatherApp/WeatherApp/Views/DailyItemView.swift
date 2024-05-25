@@ -19,7 +19,7 @@ struct DailyItemView: View {
             Text("La").font(.system(size: 20))
             Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
-            VStack(spacing: 10) {
+            HStack(spacing: 10) {
                 Text(String(format: "H: %.1f°", maxTemperature))
                     .font(.system(size: 18))
                 Text(String(format: "L: %.1f°", minTemperature))

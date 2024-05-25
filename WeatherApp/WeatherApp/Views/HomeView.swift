@@ -16,7 +16,7 @@ struct HomeView: View {
                 Rectangle().foregroundStyle(.blue.opacity(0.2))
                     TabView {
                         ForEach(MockData.items.indices) { index in
-                            let item = MockData.items[index]
+                            //let item = MockData.items[index]
                             if let weatherData = viewModel.weatherData {
                                 WeatherContainer(coordinates: CLLocationCoordinate2D(latitude: viewModel.latitude ?? 0, longitude: viewModel.longitude ?? 0), viewModel: viewModel)
 

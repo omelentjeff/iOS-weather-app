@@ -16,7 +16,7 @@ struct WeatherData: Codable {
 }
 
 struct Current: Codable {
-    let temperature2M: Double
+    let temperature2M: Double   
 }
 
 struct Daily: Codable {
