@@ -9,7 +9,7 @@ import SwiftUI
 import CoreLocation
 
 struct WeatherContainer: View {
-    var coordinates: CLLocationCoordinate2D
+    //var coordinates: CLLocationCoordinate2D
     @ObservedObject var viewModel: WeatherViewModel
     
     var body: some View {
@@ -21,10 +21,6 @@ struct WeatherContainer: View {
                         SevenDayForecastView(viewModel: viewModel)
                     } else {
                         Text("Loading...")
-                    }
-                }.onAppear {
-                    DispatchQueue.main.async {
-                        viewModel.fetchWeather(for: Date(), coordinates: coordinates)
                     }
                 }
             }

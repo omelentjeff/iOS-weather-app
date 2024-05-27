@@ -23,9 +23,13 @@ struct ContainerView: View {
             } else {
                 SplashScreenView(isPresented: $isSplashScreenViewPresented)
                     .onAppear {
-                        // Fetch weather data in the background
-                        DispatchQueue.global().async {
-                            weatherViewModel.fetchWeather(for: Date(), coordinates: CLLocationCoordinate2D(latitude: 23, longitude: 62))
+                        // Start checking location services
+                        viewModel.checkIfLocationServicesIsEnabled()
+                    }
+                    .onChange(of: viewModel.coordinates) { newCoordinates in
+                        // Fetch weather data when coordinates are updated
+                        if newCoordinates.latitude != 0.0 && newCoordinates.longitude != 0.0 {
+                            weatherViewModel.fetchWeather(for: Date(), coordinates: newCoordinates)
                         }
                     }
             }

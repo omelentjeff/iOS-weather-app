@@ -18,7 +18,7 @@ struct HomeView: View {
                         ForEach(MockData.items.indices) { index in
                             //let item = MockData.items[index]
                             if let weatherData = viewModel.weatherData {
-                                WeatherContainer(coordinates: CLLocationCoordinate2D(latitude: viewModel.latitude ?? 0, longitude: viewModel.longitude ?? 0), viewModel: viewModel)
+                                WeatherContainer(viewModel: viewModel)
 
                                     .tabItem {
                                         if index == 0 {

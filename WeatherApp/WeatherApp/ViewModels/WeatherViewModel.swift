@@ -23,7 +23,12 @@ class WeatherViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.weatherData = weather
                     self.selectedDate = date
-                    print("Loaded")
+                    if let latitude = self.weatherData?.latitude,
+                      let longitude = self.weatherData?.longitude {
+                       print("Loaded weather \(latitude) \(longitude)")
+                   } else {
+                       print("Loaded weather, but latitude or longitude is missing.")
+                   }
                 }
             } catch {
                 print(error)
