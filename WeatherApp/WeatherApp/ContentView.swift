@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @StateObject private var viewModel = LocationViewModel()
@@ -17,7 +18,7 @@ struct ContentView: View {
             //TitleView()
             Spacer()
             TabView {
-                HomeView(viewModel: weatherViewModel)
+                HomeView(viewModel: weatherViewModel, coordinates: CLLocationCoordinate2D(latitude: viewModel.coordinates.latitude, longitude: viewModel.coordinates.longitude))
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }

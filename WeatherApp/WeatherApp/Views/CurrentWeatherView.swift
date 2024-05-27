@@ -10,10 +10,11 @@ import CoreLocation
 
 struct CurrentWeatherView: View {
     var weatherData: WeatherData
+    var locationTitle: String
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Pirkkala").font(.system(size: 22))
+            Text(locationTitle).font(.system(size: 22))
             HStack(spacing: 10) {
                 Text(String(format: "%.0f°", weatherData.current.temperature2M)).font(.system(size: 50))
                 Image(systemName: "sun.max").font(.system(size: 40)).padding(.trailing, 20)//.foregroundStyle(.yellow)

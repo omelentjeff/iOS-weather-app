@@ -10,6 +10,7 @@ import CoreLocation
 
 struct HomeView: View {
     @ObservedObject var viewModel: WeatherViewModel
+    var coordinates: CLLocationCoordinate2D
     
     var body: some View {
             ZStack {
@@ -18,8 +19,7 @@ struct HomeView: View {
                         ForEach(MockData.items.indices) { index in
                             //let item = MockData.items[index]
                             if let weatherData = viewModel.weatherData {
-                                WeatherContainer(viewModel: viewModel)
-
+                                WeatherContainer(viewModel: viewModel, locationTitle: "placeholder")
                                     .tabItem {
                                         if index == 0 {
                                             Image(systemName: "location")
