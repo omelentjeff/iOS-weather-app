@@ -18,20 +18,20 @@ struct ContainerView: View {
             if !isSplashScreenViewPresented {
                 ZStack {
                     Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
-                    ContentView(weatherViewModel: weatherViewModel)
+                    ContentView(weatherViewModel: weatherViewModel, locationViewModel: viewModel)
                 }
             } else {
                 SplashScreenView(isPresented: $isSplashScreenViewPresented)
-                    .onAppear {
-                        // Start checking location services
-                        viewModel.checkIfLocationServicesIsEnabled()
+                .onAppear {
+                    // Start checking location services
+                    viewModel.checkIfLocationServicesIsEnabled()
+                }
+                .onChange(of: viewModel.coordinates) { newCoordinates in
+                    // Fetch weather data when coordinates are updated
+                    if newCoordinates.latitude != 0.0 && newCoordinates.longitude != 0.0 {
+                        weatherViewModel.fetchWeather(for: Date(), coordinates: newCoordinates)
                     }
-                    .onChange(of: viewModel.coordinates) { newCoordinates in
-                        // Fetch weather data when coordinates are updated
-                        if newCoordinates.latitude != 0.0 && newCoordinates.longitude != 0.0 {
-                            weatherViewModel.fetchWeather(for: Date(), coordinates: newCoordinates)
-                        }
-                    }
+                }
             }
         }
     }

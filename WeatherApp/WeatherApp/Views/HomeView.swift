@@ -19,7 +19,7 @@ struct HomeView: View {
                         ForEach(MockData.items.indices) { index in
                             //let item = MockData.items[index]
                             if let weatherData = viewModel.weatherData {
-                                WeatherContainer(viewModel: viewModel, locationTitle: "placeholder")
+                                CurrentPlaceView(viewModel: viewModel, coordinates: CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude))
                                     .tabItem {
                                         if index == 0 {
                                             Image(systemName: "location")

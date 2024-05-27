@@ -15,7 +15,7 @@ struct CityDetailView: View {
     
     var body: some View {
         HStack {
-            WeatherContainer(viewModel: viewModel, locationTitle: city.name)
+            WeatherContainer(viewModel: viewModel, locationTitle: city.name /*coordinates: CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude)*/)
         }.onAppear {
             DispatchQueue.main.async {
                 viewModel.fetchWeather(for: Date(), coordinates: CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude))

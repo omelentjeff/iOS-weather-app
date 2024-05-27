@@ -9,16 +9,16 @@ import SwiftUI
 import CoreLocation
 
 struct ContentView: View {
-    @StateObject private var viewModel = LocationViewModel()
-    @ObservedObject var weatherViewModel: WeatherViewModel
-    @StateObject var searchViewModel = SearchViewModel(initialValue: "")
+       @ObservedObject var weatherViewModel: WeatherViewModel
+       @ObservedObject var locationViewModel: LocationViewModel
+       @StateObject var searchViewModel = SearchViewModel(initialValue: "")
     
     var body: some View {
         VStack {
             //TitleView()
             Spacer()
             TabView {
-                HomeView(viewModel: weatherViewModel, coordinates: CLLocationCoordinate2D(latitude: viewModel.coordinates.latitude, longitude: viewModel.coordinates.longitude))
+                HomeView(viewModel: weatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude))
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
@@ -39,8 +39,8 @@ struct ContentView: View {
                         Label("Settings", systemImage: "gearshape")
                     }
             }
-        }.onAppear {
-            viewModel.checkIfLocationServicesIsEnabled()
-        }
+        }/*.onAppear {
+            locationViewModel.checkIfLocationServicesIsEnabled()
+        }*/
     }
 }

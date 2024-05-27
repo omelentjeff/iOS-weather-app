@@ -34,6 +34,7 @@
 		E8E3F88D2BEE9BB500AB81C2 /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F88C2BEE9BB500AB81C2 /* HourlyWeatherView.swift */; };
 		E8E3F88F2BEE9E6400AB81C2 /* HourlyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F88E2BEE9E6400AB81C2 /* HourlyItemView.swift */; };
 		E8E3F8912BEF8DBC00AB81C2 /* DailyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F8902BEF8DBC00AB81C2 /* DailyItemView.swift */; };
+		E8F7A0D72C04F857007B3AF4 /* CurrentPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F7A0D62C04F857007B3AF4 /* CurrentPlaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		E8E3F88C2BEE9BB500AB81C2 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		E8E3F88E2BEE9E6400AB81C2 /* HourlyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyItemView.swift; sourceTree = "<group>"; };
 		E8E3F8902BEF8DBC00AB81C2 /* DailyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyItemView.swift; sourceTree = "<group>"; };
+		E8F7A0D62C04F857007B3AF4 /* CurrentPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				E883BBF52BE7B244003A0CC1 /* TitleView.swift */,
 				E883BBFF2BE7CCC4003A0CC1 /* SettingsView.swift */,
 				E883BC012BE8D26A003A0CC1 /* HomeView.swift */,
+				E8F7A0D62C04F857007B3AF4 /* CurrentPlaceView.swift */,
 				E86444FB2BF66BE40006951D /* MapView.swift */,
 				E8CA51252C02131D00BB712D /* CityDetailView.swift */,
 				E8CA51232C01F3B500BB712D /* SearchItemView.swift */,
@@ -242,6 +245,7 @@
 				E8CA51262C02131D00BB712D /* CityDetailView.swift in Sources */,
 				E883BC062BEA824B003A0CC1 /* CurrentWeatherView.swift in Sources */,
 				E883BC042BEA3ABC003A0CC1 /* DarkModeViewModifier.swift in Sources */,
+				E8F7A0D72C04F857007B3AF4 /* CurrentPlaceView.swift in Sources */,
 				E83CF2402BFE5DC60059D806 /* WeatherModel.swift in Sources */,
 				E8CA51222C01EFFE00BB712D /* SearchModel.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
