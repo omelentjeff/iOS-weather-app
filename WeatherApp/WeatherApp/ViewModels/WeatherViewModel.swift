@@ -37,7 +37,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherData {
-        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto"
+        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum&timezone=auto"
         
         guard let url = URL(string: endpoint) else { throw WeatherError.invalidURL }
         
@@ -87,10 +87,11 @@ class WeatherViewModel: ObservableObject {
 
 
     
-    func getSevenDaysTemperatures() -> (dates: [Date], maxTemperatures: [Double], minTemperatures: [Double]) {
+    func getSevenDaysTemperatures() -> (dates: [Date], rainSums: [Double], maxTemperatures: [Double], minTemperatures: [Double]) {
         guard let dateStringArray = weatherData?.daily.time,
+              let rainSums = weatherData?.daily.rainSum,
               let maxTemperature = weatherData?.daily.temperature2MMax,
-              let minTemperature = weatherData?.daily.temperature2MMin else { return ([], [], []) }
+              let minTemperature = weatherData?.daily.temperature2MMin else { return ([], [], [], []) }
         
         let dateFormatter = DateFormatter()
            dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -98,6 +99,6 @@ class WeatherViewModel: ObservableObject {
            // Convert string dates to Date objects
            let dates = dateStringArray.compactMap { dateFormatter.date(from: $0) }
         
-        return (dates, maxTemperature, minTemperature)
+        return (dates, rainSums, maxTemperature, minTemperature)
     }
 }
