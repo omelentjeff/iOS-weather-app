@@ -16,6 +16,10 @@ struct HourlyWeatherView: View {
         date == nil
     }
     
+    var hourlyTemperatures: [HourlyTemperature] {
+        viewModel.getNext24HoursTemperatures(for: date)
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             if !isEmbedded {
@@ -24,12 +28,17 @@ struct HourlyWeatherView: View {
             if !isEmbedded {
                 Divider()
             }
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 30) {
-                    ForEach(viewModel.getNext24HoursTemperatures(for: date).indices, id: \.self) { index in
-                        let hourlyTemp = viewModel.getNext24HoursTemperatures(for: date)[index]
-                        HourlyItemView(index: index, hourlyTemp: hourlyTemp, isToday: isToday)
-                            .id(UUID())
+            if hourlyTemperatures.isEmpty {
+                Text("Hourly weather not available")
+                    .padding(isEmbedded ? 5 : 20)
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 38') {
+                        ForEach(hourlyTemperatures.indices, id: \.self) { index in
+                            let hourlyTemp = hourlyTemperatures[index]
+                            HourlyItemView(index: index, hourlyTemp: hourlyTemp, isToday: isToday)
+                                .id(UUID())
+                        }
                     }
                 }
             }
