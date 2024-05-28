@@ -11,13 +11,6 @@ struct SevenDayForecastView: View {
     @ObservedObject var viewModel: WeatherViewModel
     @State private var selectedDailyIndex: Int? = nil
     @State private var isHourlyViewVisible: Bool = false
-    @State private var activeRowIndex: Int? = nil
-    
-    /*ForEach(viewModel.getNext24HoursTemperatures().indices, id: \.self) { index in
-        let temperature = viewModel.getNext24HoursTemperatures()[index]
-        HourlyItemView(temperature: temperature)
-            .id(UUID())
-    }*/
     
     var body: some View {
         ScrollView {
@@ -28,32 +21,46 @@ struct SevenDayForecastView: View {
                     let maxTemperatures = temperatures.maxTemperatures
                     let minTemperatures = temperatures.minTemperatures
                     let dates = temperatures.dates
+                    let dateString = dates[index].toString(format: "yyyy-MM-dd")
+                    let weekday = getWeekday(from: dateString) ?? "Unknown"
                     
                     VStack {
                         Divider()
                         Spacer()
-                        DailyItemView(maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], isSelected: selectedDailyIndex == index, buttonAction: {
+                        DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], isSelected: selectedDailyIndex == index, buttonAction: {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 if self.selectedDailyIndex == index {
                                     self.selectedDailyIndex = nil
                                     self.isHourlyViewVisible = false
-                                    self.activeRowIndex = nil
                                 } else {
                                     self.selectedDailyIndex = index
                                     self.isHourlyViewVisible = true
-                                    self.activeRowIndex = index
                                 }
                             }
                         }).padding(.top, isHourlyViewVisible ? 0 : 20)
                         
                         if selectedDailyIndex == index {
-                            if isHourlyViewVisible {
-                                HourlyWeatherView(viewModel: viewModel, date: dates[index], isEmbedded: true)
-                            }
+                            HourlyWeatherView(viewModel: viewModel, date: dates[index], isEmbedded: true)
                         }
-                    }.padding()//.background(index == activeRowIndex && isHourlyViewVisible ? Color.blue.opacity(0.2) : Color.clear).clipShape(RoundedRectangle(cornerRadius: 30))
+                    }.padding()
                 }
             }.backgroundStyle(.blue.opacity(0.2))//.frame(width: 340)
         }
     }
+}
+
+func getWeekday(from dateString: String) -> String? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+    
+    if let date = dateFormatter.date(from: dateString) {
+        let calendar = Calendar.current
+        let weekdayIndex = calendar.component(.weekday, from: date)
+        
+        let weekdaySymbols = calendar.weekdaySymbols
+        let weekday = weekdaySymbols[weekdayIndex - 1]
+        return String(weekday.prefix(3))
+    }
+    return nil
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DailyItemView: View {
+    let weekday: String
     let maxTemperature: Double
     let minTemperature: Double
     let isSelected: Bool
@@ -16,7 +17,7 @@ struct DailyItemView: View {
     
     var body: some View {
         HStack {
-            Text("La").font(.system(size: 20))
+            Text(weekday).font(.system(size: 20))
             Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
             HStack(spacing: 10) {

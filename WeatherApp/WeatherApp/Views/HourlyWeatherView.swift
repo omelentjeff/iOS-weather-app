@@ -33,7 +33,7 @@ struct HourlyWeatherView: View {
                     .padding(isEmbedded ? 5 : 20)
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 38') {
+                    LazyHStack(spacing: isEmbedded ? 24: 38) {
                         ForEach(hourlyTemperatures.indices, id: \.self) { index in
                             let hourlyTemp = hourlyTemperatures[index]
                             HourlyItemView(index: index, hourlyTemp: hourlyTemp, isToday: isToday)

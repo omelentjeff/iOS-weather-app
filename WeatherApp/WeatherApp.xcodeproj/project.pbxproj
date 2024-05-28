@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E815E30F2C06330B001E48ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E815E30E2C06330B001E48ED /* Extensions.swift */; };
 		E83066392BEBC070002A6CB1 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83066382BEBC070002A6CB1 /* SplashScreenView.swift */; };
 		E830663B2BEBC07D002A6CB1 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E830663A2BEBC07D002A6CB1 /* ContainerView.swift */; };
 		E83CF23D2BFE5CE60059D806 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83CF23C2BFE5CE60059D806 /* WeatherViewModel.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E815E30E2C06330B001E48ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E83066382BEBC070002A6CB1 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		E830663A2BEBC07D002A6CB1 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		E83CF23C2BFE5CE60059D806 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E815E30D2C0632F0001E48ED /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E815E30E2C06330B001E48ED /* Extensions.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		E83CF23E2BFE5DBA0059D806 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E883BBE62BE7B1EA003A0CC1 /* WeatherAppApp.swift */,
+				E815E30D2C0632F0001E48ED /* Util */,
 				E83CF23E2BFE5DBA0059D806 /* Models */,
 				E86B56E42BECE9FF00985213 /* ViewModels */,
 				E883BBF42BE7B22C003A0CC1 /* Views */,
@@ -234,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8CA51202C01EF6F00BB712D /* SearchViewModel.swift in Sources */,
+				E815E30F2C06330B001E48ED /* Extensions.swift in Sources */,
 				E883BBFA2BE7C275003A0CC1 /* SearchView.swift in Sources */,
 				E883BC002BE7CCC4003A0CC1 /* SettingsView.swift in Sources */,
 				E8E3F8912BEF8DBC00AB81C2 /* DailyItemView.swift in Sources */,
