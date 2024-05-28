@@ -11,14 +11,14 @@ import CoreLocation
 struct ContainerView: View {
     @StateObject private var viewModel = LocationViewModel()
     @State private var isSplashScreenViewPresented = true
-    @StateObject private var weatherViewModel = WeatherViewModel()
+    @StateObject private var homeWeatherViewModel = WeatherViewModel()
     
     var body: some View {
         ZStack {
             if !isSplashScreenViewPresented {
                 ZStack {
                     Rectangle().foregroundStyle(.blue.opacity(0.2)).ignoresSafeArea()
-                    ContentView(weatherViewModel: weatherViewModel, locationViewModel: viewModel)
+                    ContentView(homeWeatherViewModel: homeWeatherViewModel, locationViewModel: viewModel)
                 }
             } else {
                 SplashScreenView(isPresented: $isSplashScreenViewPresented)
@@ -26,10 +26,12 @@ struct ContainerView: View {
                     // Start checking location services
                     viewModel.checkIfLocationServicesIsEnabled()
                 }
+                
+                //TODO Consider ASYNC BLOCK FOR THIS
                 .onChange(of: viewModel.coordinates) { newCoordinates in
                     // Fetch weather data when coordinates are updated
                     if newCoordinates.latitude != 0.0 && newCoordinates.longitude != 0.0 {
-                        weatherViewModel.fetchWeather(for: Date(), coordinates: newCoordinates)
+                        homeWeatherViewModel.fetchWeather(for: Date(), coordinates: newCoordinates)
                     }
                 }
             }

@@ -9,7 +9,8 @@ import SwiftUI
 import CoreLocation
 
 struct ContentView: View {
-       @ObservedObject var weatherViewModel: WeatherViewModel
+       @ObservedObject var homeWeatherViewModel: WeatherViewModel
+       @StateObject var searchWeatherViewModel = WeatherViewModel()
        @ObservedObject var locationViewModel: LocationViewModel
        @StateObject var searchViewModel = SearchViewModel(initialValue: "")
     
@@ -18,11 +19,11 @@ struct ContentView: View {
             //TitleView()
             Spacer()
             TabView {
-                HomeView(viewModel: weatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude))
+                HomeView(viewModel: homeWeatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude))
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
-                SearchView(searchViewModel: searchViewModel, weatherViewModel: weatherViewModel)
+                SearchView(searchViewModel: searchViewModel, weatherViewModel: searchWeatherViewModel)
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }

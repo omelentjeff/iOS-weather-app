@@ -25,7 +25,7 @@ class WeatherViewModel: ObservableObject {
                     self.selectedDate = date
                     if let latitude = self.weatherData?.latitude,
                       let longitude = self.weatherData?.longitude {
-                       print("Loaded weather \(latitude) \(longitude)")
+                       print(" ViewModel Loaded weather \(latitude) \(longitude)")
                    } else {
                        print("Loaded weather, but latitude or longitude is missing.")
                    }

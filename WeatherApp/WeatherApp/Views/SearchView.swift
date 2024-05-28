@@ -33,10 +33,8 @@ struct SearchView: View {
                    
                    if let searchData = searchViewModel.searchData?.results, !searchData.isEmpty {
                        List(searchData, id: \.id) { city in
-                           if let weatherData = weatherViewModel.weatherData {
-                               NavigationLink(destination: CityDetailView(city: city, viewModel: weatherViewModel)) {
-                                   Text("\(city.name), \(city.country)")
-                               }
+                           NavigationLink(destination: CityDetailView(city: city, viewModel: weatherViewModel)) {
+                               Text("\(city.name), \(city.country)")
                            }
                        }
                    } else {
