@@ -11,7 +11,8 @@ struct DailyItemView: View {
     let weekday: String
     let maxTemperature: Double
     let minTemperature: Double
-    let rainSum: Double
+    let sunrise: String
+    let sunset: String
     let isSelected: Bool
     let buttonAction: () -> Void
     @State private var rotationAngle = Angle(degrees: 0)
@@ -21,8 +22,8 @@ struct DailyItemView: View {
             Text(weekday).font(.system(size: 18))
             Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
             Spacer()
-            VStack(spacing: 5) {
-                HStack(spacing: 10) {
+            VStack(spacing: 10) {
+                HStack(spacing: 40) {
                     Text(String(format: "H: %.0f°", maxTemperature))
                         .font(.system(size: 16))
                     Text(String(format: "L: %.0f°", minTemperature))
@@ -31,12 +32,13 @@ struct DailyItemView: View {
                 if isSelected {
                     HStack(spacing: 15) {
                         HStack(spacing: 5) {
-                            Image(systemName: "drop")
-                        Text(String(rainSum))
+                            Image(systemName: "sunrise").font(.system(size: 16))
+                            Text(sunrise).font(.system(size: 16))
                     }
-                        .font(.system(size: 16))
-                    Text(String(format: "L: %.0f°", minTemperature))
-                        .font(.system(size: 16))
+                        HStack(spacing: 5) {
+                            Image(systemName: "sunset").font(.system(size: 16))
+                            Text(sunset).font(.system(size: 16))
+                        }
                     }
                 }
             }

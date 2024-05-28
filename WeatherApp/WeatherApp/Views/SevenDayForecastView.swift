@@ -20,7 +20,8 @@ struct SevenDayForecastView: View {
                 ForEach(0..<7, id: \.self) { index in
                     let maxTemperatures = temperatures.maxTemperatures
                     let minTemperatures = temperatures.minTemperatures
-                    let rainSums = temperatures.rainSums
+                    let sunrises = temperatures.sunrise
+                    let sunsets = temperatures.sunset
                     let dates = temperatures.dates
                     let dateString = dates[index].toString(format: "yyyy-MM-dd")
                     let weekday = getWeekday(from: dateString) ?? "Unknown"
@@ -28,7 +29,7 @@ struct SevenDayForecastView: View {
                     VStack {
                         Divider()
                         Spacer()
-                        DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], rainSum: rainSums[index], isSelected: selectedDailyIndex == index, buttonAction: {
+                        DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], sunrise: sunrises[index], sunset: sunsets[index], isSelected: selectedDailyIndex == index, buttonAction: {
                             withAnimation(.easeInOut(duration: 0.2)) {
                                 if self.selectedDailyIndex == index {
                                     self.selectedDailyIndex = nil
