@@ -61,32 +61,42 @@ struct SevenDayForecastView: View {
         let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
         let dates = viewModel.getSevenDaysTemperatures().dates
         
-        Chart {
-            ForEach(0..<rainProbabilities.count, id: \.self) { index in
-                LineMark(
-                    x: .value("Date", dates[index], unit: .day),
-                    y: .value("Rain Probability", rainProbabilities[index])
-                )
-                .symbol(.circle)
-            }
-        }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .day)) { value in
-               AxisValueLabel {
-                   if let dateValue = value.as(Date.self) {
-                       Text(dateValue, format: Date.FormatStyle().day().month())
-                   }
-               }
-           }
-        }
-        .chartYAxis {
-            AxisMarks(values: .automatic) { value in
-                AxisValueLabel {
-                    Text("\(value.as(Double.self) ?? 0)%")
+        
+        
+        VStack {
+            Text("Rain Probability Chart")
+                .font(.title)
+                .padding(.bottom, 10)
+            
+            
+            
+            Chart {
+                ForEach(0..<rainProbabilities.count, id: \.self) { index in
+                    LineMark(
+                        x: .value("Date", dates[index], unit: .day),
+                        y: .value("Rain Probability", rainProbabilities[index])
+                    )
+                    .symbol(.circle)
                 }
             }
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .day)) { value in
+                    AxisValueLabel {
+                        if let dateValue = value.as(Date.self) {
+                            Text(dateValue, format: Date.FormatStyle().day().month())
+                        }
+                    }
+                }
+            }
+            .chartYAxis {
+                AxisMarks(values: [0, 20, 40, 60, 80, 100]) { value in
+                    AxisValueLabel {
+                        Text("\(value.as(Int.self) ?? 0)%")
+                    }
+                }
+            }
+            .frame(height: 200)
         }
-        .frame(height: 200)
     }
 }
 
