@@ -19,7 +19,7 @@ struct ContentView: View {
             //TitleView()
             Spacer()
             TabView {
-                HomeView(viewModel: homeWeatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude))
+                HomeView(viewModel: homeWeatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude), title: "Your Location")
                     .tabItem {
                         Label("Weather", systemImage: "cloud.sun")
                     }
