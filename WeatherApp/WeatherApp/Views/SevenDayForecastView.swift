@@ -83,7 +83,7 @@ struct SevenDayForecastView: View {
                 AxisMarks(values: .stride(by: .day)) { value in
                     AxisValueLabel {
                         if let dateValue = value.as(Date.self) {
-                            Text(dateValue, format: Date.FormatStyle().day().month())
+                            Text(dateValue, format: Date.FormatStyle().day())
                         }
                     }
                 }

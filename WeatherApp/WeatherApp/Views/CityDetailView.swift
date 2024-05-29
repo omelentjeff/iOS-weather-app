@@ -20,6 +20,6 @@ struct CityDetailView: View {
             DispatchQueue.main.async {
                 viewModel.fetchWeather(for: Date(), coordinates: CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude))
             }
-        }
+        }.navigationBarHidden(true)
     }
 }

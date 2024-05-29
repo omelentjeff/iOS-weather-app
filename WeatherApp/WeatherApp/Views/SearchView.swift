@@ -33,7 +33,8 @@ struct SearchView: View {
                    
                    if let searchData = searchViewModel.searchData?.results, !searchData.isEmpty {
                        List(searchData, id: \.id) { city in
-                           NavigationLink(destination: CityDetailView(city: city, viewModel: weatherViewModel)) {
+                           NavigationLink(destination: CityDetailView(city: city, viewModel: weatherViewModel)/*toolbar(
+                            .hidden, for: .navigationBar)*/) {
                                Text("\(city.name), \(city.country)")
                            }
                        }
@@ -43,7 +44,9 @@ struct SearchView: View {
                    }
                    Spacer()
                }
+               .background(Color.blue.opacity(0.2))
                .navigationTitle("Search")
+               .navigationBarBackButtonHidden(false)
            }
        }
 }
