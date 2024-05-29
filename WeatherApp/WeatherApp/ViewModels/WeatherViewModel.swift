@@ -102,10 +102,12 @@ class WeatherViewModel: ObservableObject {
         
         dateFormatter.dateFormat = "yyyy-MM-dd'T'H:mm"
             
-        let sunrise = sunriseArray.map { $0.components(separatedBy: "T")[1].replacingOccurrences(of: ":", with: ".") }
-        let sunset = sunsetArray.map { $0.components(separatedBy: "T")[1].replacingOccurrences(of: ":", with: ".") }
+        let sunrise = getHoursFormatted(stringArray: sunriseArray)
+        let sunset = getHoursFormatted(stringArray: sunsetArray)
         
         print(sunrise)
         return (dates, sunrise, sunset, maxTemperature, minTemperature)
     }
 }
+
+
