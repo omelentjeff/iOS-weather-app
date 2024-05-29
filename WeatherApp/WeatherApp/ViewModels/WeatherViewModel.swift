@@ -37,7 +37,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherData {
-        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto"
+        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&timezone=auto"
         
         guard let url = URL(string: endpoint) else { throw WeatherError.invalidURL }
         
@@ -107,6 +107,12 @@ class WeatherViewModel: ObservableObject {
         
         print(sunrise)
         return (dates, sunrise, sunset, maxTemperature, minTemperature)
+    }
+    
+    func getSevenDaysRainProbabilities() -> [Int] {
+        print(weatherData?.daily.precipitationProbabilityMax)
+        guard let precipitations = weatherData?.daily.precipitationProbabilityMax else { return [] }
+        return precipitations
     }
 }
 

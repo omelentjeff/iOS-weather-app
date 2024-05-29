@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct SevenDayForecastView: View {
     @ObservedObject var viewModel: WeatherViewModel
@@ -14,40 +15,78 @@ struct SevenDayForecastView: View {
     
     var body: some View {
         ScrollView {
-            GroupBox("7 Days") {
-                let temperatures = viewModel.getSevenDaysTemperatures()
+            VStack(spacing: 20) {
+                rainProbabilityChart()
+                    .padding()
                 
-                ForEach(0..<7, id: \.self) { index in
-                    let maxTemperatures = temperatures.maxTemperatures
-                    let minTemperatures = temperatures.minTemperatures
-                    let sunrises = temperatures.sunrise
-                    let sunsets = temperatures.sunset
-                    let dates = temperatures.dates
-                    let dateString = dates[index].toString(format: "yyyy-MM-dd")
-                    let weekday = getWeekday(from: dateString) ?? "Unknown"
+                GroupBox("7 Days") {
+                    let temperatures = viewModel.getSevenDaysTemperatures()
                     
-                    VStack {
-                        Divider()
-                        Spacer()
-                        DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], sunrise: sunrises[index], sunset: sunsets[index], isSelected: selectedDailyIndex == index, buttonAction: {
-                            withAnimation(.easeInOut(duration: 0.2)) {
-                                if self.selectedDailyIndex == index {
-                                    self.selectedDailyIndex = nil
-                                    self.isHourlyViewVisible = false
-                                } else {
-                                    self.selectedDailyIndex = index
-                                    self.isHourlyViewVisible = true
-                                }
-                            }
-                        }).padding(.top, isHourlyViewVisible ? 0 : 20)
+                    ForEach(0..<7, id: \.self) { index in
+                        let maxTemperatures = temperatures.maxTemperatures
+                        let minTemperatures = temperatures.minTemperatures
+                        let sunrises = temperatures.sunrise
+                        let sunsets = temperatures.sunset
+                        let dates = temperatures.dates
+                        let dateString = dates[index].toString(format: "yyyy-MM-dd")
+                        let weekday = getWeekday(from: dateString) ?? "Unknown"
                         
-                        if selectedDailyIndex == index {
-                            HourlyWeatherView(viewModel: viewModel, date: dates[index], isEmbedded: true)
-                        }
-                    }.padding()
-                }
-            }.backgroundStyle(.blue.opacity(0.2))//.frame(width: 340)
+                        VStack {
+                            Divider()
+                            Spacer()
+                            DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], sunrise: sunrises[index], sunset: sunsets[index], isSelected: selectedDailyIndex == index, buttonAction: {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    if self.selectedDailyIndex == index {
+                                        self.selectedDailyIndex = nil
+                                        self.isHourlyViewVisible = false
+                                    } else {
+                                        self.selectedDailyIndex = index
+                                        self.isHourlyViewVisible = true
+                                    }
+                                }
+                            }).padding(.top, isHourlyViewVisible ? 0 : 20)
+                            
+                            if selectedDailyIndex == index {
+                                HourlyWeatherView(viewModel: viewModel, date: dates[index], isEmbedded: true)
+                            }
+                        }.padding()
+                    }
+                }.background(Color.blue.opacity(0.2))
+            }
         }
+    }
+    
+    @ViewBuilder
+    private func rainProbabilityChart() -> some View {
+        let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
+        let dates = viewModel.getSevenDaysTemperatures().dates
+        
+        Chart {
+            ForEach(0..<rainProbabilities.count, id: \.self) { index in
+                LineMark(
+                    x: .value("Date", dates[index], unit: .day),
+                    y: .value("Rain Probability", rainProbabilities[index])
+                )
+                .symbol(.circle)
+            }
+        }
+        .chartXAxis {
+            AxisMarks(values: .stride(by: .day)) { value in
+               AxisValueLabel {
+                   if let dateValue = value.as(Date.self) {
+                       Text(dateValue, format: Date.FormatStyle().day().month())
+                   }
+               }
+           }
+        }
+        .chartYAxis {
+            AxisMarks(values: .automatic) { value in
+                AxisValueLabel {
+                    Text("\(value.as(Double.self) ?? 0)%")
+                }
+            }
+        }
+        .frame(height: 200)
     }
 }
 
@@ -66,3 +105,4 @@ func getWeekday(from dateString: String) -> String? {
     }
     return nil
 }
+

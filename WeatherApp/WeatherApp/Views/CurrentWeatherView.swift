@@ -54,11 +54,12 @@ struct CurrentWeatherView: View {
                         }
                     }
                     .padding()
+                    .frame(maxWidth: .infinity)
                     .background(Color.blue.opacity(0.2))
-                    .cornerRadius(10)
+                    //.cornerRadius(10)
                     
                     Spacer()
-                }.padding()
+                }//.padding()
             } else {
                 VStack(spacing: 20) {
                     Text("--°").font(.system(size: 50)).padding()

@@ -44,8 +44,8 @@ struct HourlyWeatherView: View {
             }
         }
         .padding(isEmbedded ? 5 : 24)
-        .background(Color.blue.opacity(0.2))
+        /*.background(Color.blue.opacity(0.2))
         .cornerRadius(15)
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 16)*/
     }
 }

@@ -26,6 +26,7 @@ struct Daily: Codable {
     let weatherCode: [Int]
     let sunrise: [String]
     let sunset: [String]
+    let precipitationProbabilityMax: [Int]
 }
 
 struct Hourly: Codable {
