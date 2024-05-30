@@ -5,9 +5,9 @@ Weather application for iOS. Display current and 7-day forecast weather for user
 Final project for the mobile development course in TAMK.
 
 ## Tech/framework used
-Swift
-Open-Meteo Forecast API
-Open-Meteo Geocoding API
+- Swift
+- Open-Meteo Forecast API
+- Open-Meteo Geocoding API
 
 ## Features
 - Display current weather for user's location
