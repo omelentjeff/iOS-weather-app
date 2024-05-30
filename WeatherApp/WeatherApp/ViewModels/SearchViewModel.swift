@@ -12,6 +12,7 @@ class SearchViewModel: ObservableObject {
     @Published var searchData: SearchData?
     @Published var currentValue: String
     @Published var debouncedValue: String
+    @Published var loading: Bool = false
     
     private var subscriber: AnyCancellable?
     
@@ -40,11 +41,14 @@ class SearchViewModel: ObservableObject {
             return
         }
         
+        self.loading = true
+        
         Task {
             do {
                 let search = try await getSearchResults(for: query)
                 DispatchQueue.main.async {
                     self.searchData = search
+                    self.loading = false
                     print("Loaded search results")
                 }
             } catch {

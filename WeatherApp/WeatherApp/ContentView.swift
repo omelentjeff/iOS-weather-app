@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //TitleView()
+            //TitleView()pirkktamap
             Spacer()
             TabView {
                 HomeView(viewModel: homeWeatherViewModel, coordinates: CLLocationCoordinate2D(latitude: locationViewModel.coordinates.latitude, longitude: locationViewModel.coordinates.longitude), title: "Your Location")
@@ -40,8 +40,15 @@ struct ContentView: View {
                         Label("Settings", systemImage: "gearshape")
                     }
             }
-        }/*.onAppear {
-            locationViewModel.checkIfLocationServicesIsEnabled()
-        }*/
+        }.onAppear {
+            setupTabBarAppearance()
+            //locationViewModel.checkIfLocationServicesIsEnabled() // Uncomment if you want to check location services on appear
+        }
     }
+    
+    private func setupTabBarAppearance() {
+            let appearance = UITabBarAppearance()
+            UITabBar.appearance().scrollEdgeAppearance = type(of: appearance).init(idiom: .unspecified)
+            UITabBar.appearance().backgroundColor = UIColor.blue.withAlphaComponent(0.1)
+        }
 }

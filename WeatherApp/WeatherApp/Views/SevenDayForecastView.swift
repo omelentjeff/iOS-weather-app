@@ -16,8 +16,8 @@ struct SevenDayForecastView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                rainProbabilityChart()
-                    .padding()
+                //LineChartView(viewModel: viewModel)
+                    //.padding()
                 
                 GroupBox("7 Days") {
                     let temperatures = viewModel.getSevenDaysTemperatures()
@@ -51,12 +51,13 @@ struct SevenDayForecastView: View {
                             }
                         }.padding()
                     }
-                }.background(Color.blue.opacity(0.2))
+                }//.background(Color.blue.opacity(0.2))
+                
             }
         }
     }
     
-    @ViewBuilder
+    /*@ViewBuilder
     private func rainProbabilityChart() -> some View {
         let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
         let dates = viewModel.getSevenDaysTemperatures().dates
@@ -97,7 +98,7 @@ struct SevenDayForecastView: View {
             }
             .frame(height: 200)
         }
-    }
+    }*/
 }
 
 func getWeekday(from dateString: String) -> String? {
@@ -116,3 +117,30 @@ func getWeekday(from dateString: String) -> String? {
     return nil
 }
 
+/*struct LineChartView: View {
+    var viewModel: WeatherViewModel
+    
+    
+    var body: some View {
+        let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
+        let dates = viewModel.getSevenDaysTemperatures().dates
+        
+        // oma struct näille
+            VStack {
+                Chart {
+                    if let weatherData = viewModel.weatherData {
+                        ForEach(rainProbabilities) { item in
+                            LineMark(
+                                x: .value("Month", item.date),
+                                y: .value("Temp", item.temperature)
+                            )
+                        }
+                    } else {
+                        Text("Jotain")
+                    }
+                }
+                .frame(height: 300)
+            }
+        }
+}
+*/

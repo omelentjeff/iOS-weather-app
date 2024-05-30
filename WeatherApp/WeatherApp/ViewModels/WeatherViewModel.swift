@@ -12,11 +12,14 @@ import CoreLocation
 class WeatherViewModel: ObservableObject {
     @Published var weatherData: WeatherData?
     @Published var selectedDate: Date?
+    @Published var loading: Bool = false
     
     var latitude: Double?
     var longitude: Double?
     
     func fetchWeather(for date: Date, coordinates: CLLocationCoordinate2D) {
+        self.loading = true
+        print("Loading = true")
         Task {
             do {
                 let weather = try await getWeather(coordinates: coordinates)
@@ -25,6 +28,8 @@ class WeatherViewModel: ObservableObject {
                     self.selectedDate = date
                     if let latitude = self.weatherData?.latitude,
                       let longitude = self.weatherData?.longitude {
+                        self.loading = false
+                        print("Loading = false")
                        print(" ViewModel Loaded weather \(latitude) \(longitude)")
                    } else {
                        print("Loaded weather, but latitude or longitude is missing.")
