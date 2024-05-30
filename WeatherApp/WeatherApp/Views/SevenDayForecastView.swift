@@ -16,8 +16,7 @@ struct SevenDayForecastView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                //LineChartView(viewModel: viewModel)
-                    //.padding()
+                ChartView(viewModel: viewModel).padding()
                 
                 GroupBox("7 Days") {
                     let temperatures = viewModel.getSevenDaysTemperatures()
