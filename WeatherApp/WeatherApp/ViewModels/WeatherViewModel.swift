@@ -114,11 +114,33 @@ class WeatherViewModel: ObservableObject {
         return (dates, sunrise, sunset, maxTemperature, minTemperature)
     }
     
-    func getSevenDaysRainProbabilities() -> [Int] {
-        print(weatherData?.daily.precipitationProbabilityMax)
+    func getSevenDaysRainProbabilities() -> [RainData] {
         guard let precipitations = weatherData?.daily.precipitationProbabilityMax else { return [] }
-        return precipitations
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Extracting dates from weather data
+        guard let dateStringArray = weatherData?.daily.time else { return [] }
+        let dates = dateStringArray.compactMap { dateFormatter.date(from: $0) }
+        
+        // Creating an array of RainData objects
+        var rainData: [RainData] = []
+        for (index, probability) in precipitations.enumerated() {
+            let date = dates.indices.contains(index) ? dates[index] : Date()
+            let rainDatum = RainData(rainProbability: probability, date: date.toString(format: "MM-dd"))
+            rainData.append(rainDatum)
+        }
+        
+        print(rainData)
+        
+        return rainData
     }
 }
 
+struct RainData: Codable, Identifiable {
+    var id = UUID()
+    var rainProbability: Int
+    var date: String
+}
 
