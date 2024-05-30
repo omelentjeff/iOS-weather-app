@@ -14,7 +14,7 @@ struct ChartView: View {
 
     var body: some View {
         VStack {
-            Text("Rain %").font(.title)
+            Text("Rain %").font(.system(size: 18))
             Chart {
                 ForEach(rainData) { item in
                     LineMark(
@@ -23,6 +23,7 @@ struct ChartView: View {
                     ).symbol(.circle)
                 }
             }.chartYScale(domain: 0...100)
+                .frame(height: 300)
         }
         .onAppear {
             self.rainData = self.viewModel.getSevenDaysRainProbabilities()
