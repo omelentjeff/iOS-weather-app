@@ -7,26 +7,21 @@
 
 import SwiftUI
 
+/**
+ A view for searching cities and displaying search results.
+
+ Use this view to search for cities and display search results. It includes a search bar, search results list, and loading indicator.
+ */
 struct SearchView: View {
+    /// The view model for search functionality.
     @ObservedObject var searchViewModel: SearchViewModel
+    /// The view model for weather data.
     @ObservedObject var weatherViewModel: WeatherViewModel
-    
-    /*
-    init() {
-        // Set the navigation bar appearance to be hidden, but keep the back button visible
-        let appearance = UINavigationBar.appearance()
-        appearance.setBackgroundImage(UIImage(), for: .default)
-        appearance.shadowImage = UIImage()
-        appearance.isTranslucent = true
-    }*/
-    
-    /*init() {
-      UITextField.appearance().clearButtonMode = .whileEditing
-    }*/
     
     var body: some View {
            NavigationStack {
                VStack {
+                   Text("Search").font(.title)
                    HStack {
                        Spacer()
                        Image(systemName: "magnifyingglass").font(.system(size: 18))
@@ -38,8 +33,6 @@ struct SearchView: View {
                            .padding()
                    }.padding(.horizontal, 10)
                    Divider()
-                   
-                   //Spacer()
                    
                    if searchViewModel.loading {
                            ProgressView()
@@ -73,16 +66,14 @@ struct SearchView: View {
     }
 }
 
+/// The view model for weather data.
 struct OvalTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(10)
-            //.background(.opacity(0.1))
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(.secondary, lineWidth: 1)
             )
-            //.cornerRadius(20)
-            //.shadow(color: .gray, radius: 10)
     }
 }

@@ -8,8 +8,15 @@
 import SwiftUI
 import Charts
 
+/**
+ A view for displaying a line chart representing rain probabilities over a period of time.
+
+ Use this view to visualize rain probabilities for the next seven days.
+ */
 struct ChartView: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The array containing rain data for the next seven days.
     @State private var rainData: [RainData] = []
 
     var body: some View {

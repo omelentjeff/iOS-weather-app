@@ -7,17 +7,30 @@
 
 import SwiftUI
 
+/**
+ A view representing the splash screen of the Weather App.
+ */
 struct SplashScreenView: View {
+    /// Binding indicating whether the splash screen is currently presented.
     @Binding var isPresented: Bool
     
+    /// The scale of the image.
     @State private var scale = CGSize(width: 0.8, height: 0.8)
+    /// The opacity of the image.
     @State private var imageOpacity = 1.0
+    /// The opacity of the title.
     @State private var titleOpacity = 0.0
+    /// The horizontal offset of the title.
     @State private var titleOffsetX: CGFloat = -100
+    /// The overall opacity of the view.
     @State private var opacity = 1.0
+    /// The color of the image.
     @State private var imageColor: Color = .yellow
+    /// The opacity of the line.
     @State private var lineOpacity = 0.0 // Initial opacity of the line
+    /// The length of the line.
     @State private var lineLength: CGFloat = 0 // Initial length of the line
+    /// The rotation angle of the image.
     @State private var rotationAngle = Angle(degrees: 0)
     
     var body: some View {

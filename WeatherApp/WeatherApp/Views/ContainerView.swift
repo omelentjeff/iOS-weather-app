@@ -8,9 +8,15 @@
 import SwiftUI
 import CoreLocation
 
+/**
+ A container view managing the splash screen and main content of the app.
+ */
 struct ContainerView: View {
+    /// The view model responsible for managing location services.
     @StateObject private var viewModel = LocationViewModel()
+    /// Indicates whether the splash screen view is currently presented.
     @State private var isSplashScreenViewPresented = true
+    /// The view model responsible for fetching weather data for the home screen.
     @StateObject private var homeWeatherViewModel = WeatherViewModel()
     
     var body: some View {
@@ -26,8 +32,6 @@ struct ContainerView: View {
                     // Start checking location services
                     viewModel.checkIfLocationServicesIsEnabled()
                 }
-                
-                //TODO Consider ASYNC BLOCK FOR THIS
                 .onChange(of: viewModel.coordinates) { newCoordinates in
                     // Fetch weather data when coordinates are updated
                     if newCoordinates.latitude != 0.0 && newCoordinates.longitude != 0.0 {

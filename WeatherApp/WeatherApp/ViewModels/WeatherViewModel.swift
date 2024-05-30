@@ -8,20 +8,34 @@
 import SwiftUI
 import CoreLocation
 
-
+/**
+ Contains the view model class for managing weather-related data and operations.
+ */
 class WeatherViewModel: ObservableObject {
+    /// Published property holding weather data.
     @Published var weatherData: WeatherData?
+    /// Published property holding the selected date.
     @Published var selectedDate: Date?
+    /// Published property indicating loading state.
     @Published var loading: Bool = false
     
+    /// Observed object for managing caching operations.
     @ObservedObject var cacheViewModel = CacheViewModel()
     
+    /// Latitude coordinate.
     var latitude: Double?
+    /// Longitude coordinate.
     var longitude: Double?
     
+    /**
+     Fetches weather data for a given date and coordinates.
+
+     - Parameters:
+        - date: The date for which weather data is requested.
+        - coordinates: The coordinates for which weather data is requested.
+     */
     func fetchWeather(for date: Date, coordinates: CLLocationCoordinate2D) {
         self.loading = true
-        print("Loading = true")
         
         Task {
             do {
@@ -33,7 +47,6 @@ class WeatherViewModel: ObservableObject {
                         if let latitude = self.weatherData?.latitude,
                             let longitude = self.weatherData?.longitude {
                             self.loading = false
-                            print("Loading = false")
                             print("ViewModel Loaded weather \(latitude) \(longitude) from cache")
                         } else {
                             print("Loaded weather from cache, but latitude or longitude is missing.")
@@ -48,7 +61,6 @@ class WeatherViewModel: ObservableObject {
                         if let latitude = self.weatherData?.latitude,
                             let longitude = self.weatherData?.longitude {
                             self.loading = false
-                            print("Loading = false")
                             print("ViewModel Loaded weather \(latitude) \(longitude) from API")
                         } else {
                             print("Loaded weather from API, but latitude or longitude is missing.")
@@ -63,6 +75,12 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
+    /**
+     Fetches weather data for a given coordinates.
+
+     - Parameter coordinates: The coordinates for which weather data is requested.
+     - Returns: The fetched weather data.
+     */
     func getWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherData {
         let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=weather_code,temperature_2m,apparent_temperature&hourly=weather_code,temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&timezone=auto"
         
@@ -83,6 +101,12 @@ class WeatherViewModel: ObservableObject {
         }
     }
     
+    /**
+     Retrieves the next 24 hours temperatures.
+
+     - Parameter date: The date for which temperatures are requested. Defaults to nil.
+     - Returns: An array of `HourlyTemperature` objects representing temperatures for the next 24 hours.
+     */
     func getNext24HoursTemperatures(for date: Date? = nil) -> [HourlyTemperature] {
         guard let hourlyTemps = weatherData?.hourly.temperature2M,
               let weatherCodes = weatherData?.hourly.weatherCode else { return [] }
@@ -115,7 +139,11 @@ class WeatherViewModel: ObservableObject {
     }
 
 
-    
+    /**
+     Retrieves weather data for the next seven days.
+
+     - Returns: A tuple containing arrays of dates, sunrise times, sunset times, weather codes, maximum temperatures, and minimum temperatures for the next seven days.
+     */
     func getSevenDaysTemperatures() -> (dates: [Date], sunrise: [String], sunset: [String], weatherCodes: [Int], maxTemperatures: [Double], minTemperatures: [Double]) {
         guard let dateStringArray = weatherData?.daily.time,
               let sunriseArray = weatherData?.daily.sunrise,
@@ -135,10 +163,14 @@ class WeatherViewModel: ObservableObject {
         let sunrise = getHoursFormatted(stringArray: sunriseArray)
         let sunset = getHoursFormatted(stringArray: sunsetArray)
         
-        print(sunrise)
         return (dates, sunrise, sunset, weatherCodes, maxTemperature, minTemperature)
     }
     
+    /**
+     Retrieves weather data for the next seven days.
+
+     - Returns: A tuple containing arrays of dates, sunrise times, sunset times, weather codes, maximum temperatures, and minimum temperatures for the next seven days.
+     */
     func getSevenDaysRainProbabilities() -> [RainData] {
         guard let precipitations = weatherData?.daily.precipitationProbabilityMax else { return [] }
         
@@ -157,16 +189,23 @@ class WeatherViewModel: ObservableObject {
             rainData.append(rainDatum)
         }
         
-        print(rainData)
-        
         return rainData
     }
     
+    /**
+     Retrieves the name of the weather icon corresponding to the provided weather code.
+
+     - Parameter weatherCode: The weather code for which the icon name is requested.
+     - Returns: The name of the weather icon corresponding to the provided weather code.
+     */
     func getWeatherIcon(for weatherCode: Int) -> String {
        return WeatherIcon.iconName(for: weatherCode)
    }
 }
 
+/**
+ Represents data about rain probability for a specific date.
+ */
 struct RainData: Codable, Identifiable {
     var id = UUID()
     var rainProbability: Int

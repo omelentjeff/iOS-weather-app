@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ Represents weather data including latitude, longitude, current weather, daily weather, and hourly weather.
+ */
 struct WeatherData: Codable {
     let latitude: Double
     let longitude: Double
@@ -15,11 +18,17 @@ struct WeatherData: Codable {
     let hourly: Hourly
 }
 
+/**
+ Represents current weather data including temperature and weather code.
+ */
 struct Current: Codable {
     let temperature2M: Double
     let weatherCode: Int
 }
 
+/**
+ Represents daily weather data including timestamps, max and min temperatures, sunrise and sunset times, precipitation probability, and weather codes.
+ */
 struct Daily: Codable {
     let time: [String]
     let temperature2MMax: [Double]
@@ -30,24 +39,36 @@ struct Daily: Codable {
     let weatherCode: [Int]
 }
 
+/**
+ Represents hourly weather data including timestamps, temperatures, and weather codes.
+ */
 struct Hourly: Codable {
     let time: [String]
     let temperature2M: [Double]
     let weatherCode: [Int]
 }
 
+/**
+ Represents hourly temperature data including hour, temperature, and weather code.
+ */
 struct HourlyTemperature {
     let hour: String
     let temperature: Double
     let weatherCode: Int
 }
 
+/**
+ Represents errors that can occur during weather data retrieval.
+ */
 enum WeatherError: Error {
     case invalidURL
     case invalidResponse
     case invalidData
 }
 
+/**
+ Represents weather icons as string values.
+ */
 enum WeatherIcon: String {
     case clearSky = "sun.max"
     case mainlyClear = "cloud.sun"
@@ -60,6 +81,12 @@ enum WeatherIcon: String {
     case thunderstormSlightOrModerate = "cloud.bolt"
     case thunderstormWithHail = "cloud.bolt.rain"
     
+    /**
+     Provides the icon name for a given weather code.
+
+     - Parameter weatherCode: The weather code to get the icon name for.
+     - Returns: The icon name corresponding to the provided weather code.
+     */
     static func iconName(for weatherCode: Int) -> String {
         switch weatherCode {
         case 0:

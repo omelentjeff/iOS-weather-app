@@ -8,10 +8,16 @@
 import SwiftUI
 import CoreLocation
 
+/**
+ A container view for displaying weather information.
+
+ Use this view to present current weather conditions for a specific location.
+ */
 struct WeatherContainer: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The title of the location.
     var locationTitle: String
-    //var coordinates: CLLocationCoordinate2D
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -22,11 +28,7 @@ struct WeatherContainer: View {
                 } else {
                     Text("Loading...")
                 }
-            }/*.onAppear {
-                DispatchQueue.main.async {
-                    viewModel.fetchWeather(for: Date(), coordinates: CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude))
-                }
-            }*/
+            }
         }
     }
 }

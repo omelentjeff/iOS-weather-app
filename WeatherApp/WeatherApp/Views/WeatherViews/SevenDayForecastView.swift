@@ -8,9 +8,18 @@
 import SwiftUI
 import Charts
 
+/**
+ A view for displaying the seven-day weather forecast.
+
+ Use this view to visualize the seven-day weather forecast, including maximum and minimum temperatures, sunrise and sunset times, and weather codes.
+
+ */
 struct SevenDayForecastView: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The index of the selected daily forecast.
     @State private var selectedDailyIndex: Int? = nil
+    /// A boolean indicating whether the hourly weather view is visible.
     @State private var isHourlyViewVisible: Bool = false
     
     var body: some View {
@@ -56,51 +65,16 @@ struct SevenDayForecastView: View {
             }
         }
     }
-    
-    /*@ViewBuilder
-    private func rainProbabilityChart() -> some View {
-        let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
-        let dates = viewModel.getSevenDaysTemperatures().dates
-        
-        
-        
-        VStack {
-            Text("Rain Probability Chart")
-                .font(.title)
-                .padding(.bottom, 10)
-            
-            
-            
-            Chart {
-                ForEach(0..<rainProbabilities.count, id: \.self) { index in
-                    LineMark(
-                        x: .value("Date", dates[index], unit: .day),
-                        y: .value("Rain Probability", rainProbabilities[index])
-                    )
-                    .symbol(.circle)
-                }
-            }
-            .chartXAxis {
-                AxisMarks(values: .stride(by: .day)) { value in
-                    AxisValueLabel {
-                        if let dateValue = value.as(Date.self) {
-                            Text(dateValue, format: Date.FormatStyle().day())
-                        }
-                    }
-                }
-            }
-            .chartYAxis {
-                AxisMarks(values: [0, 20, 40, 60, 80, 100]) { value in
-                    AxisValueLabel {
-                        Text("\(value.as(Int.self) ?? 0)%")
-                    }
-                }
-            }
-            .frame(height: 200)
-        }
-    }*/
 }
 
+/**
+ Retrieves the weekday from the given date string.
+
+ - Parameters:
+    - dateString: The date string in the format "yyyy-MM-dd".
+
+ - Returns: The weekday abbreviation (e.g., "Mon", "Tue") or nil if the conversion fails.
+ */
 func getWeekday(from dateString: String) -> String? {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -116,31 +90,3 @@ func getWeekday(from dateString: String) -> String? {
     }
     return nil
 }
-
-/*struct LineChartView: View {
-    var viewModel: WeatherViewModel
-    
-    
-    var body: some View {
-        let rainProbabilities = viewModel.getSevenDaysRainProbabilities()
-        let dates = viewModel.getSevenDaysTemperatures().dates
-        
-        // oma struct näille
-            VStack {
-                Chart {
-                    if let weatherData = viewModel.weatherData {
-                        ForEach(rainProbabilities) { item in
-                            LineMark(
-                                x: .value("Month", item.date),
-                                y: .value("Temp", item.temperature)
-                            )
-                        }
-                    } else {
-                        Text("Jotain")
-                    }
-                }
-                .frame(height: 300)
-            }
-        }
-}
-*/

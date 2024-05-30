@@ -8,8 +8,15 @@
 import SwiftUI
 import CoreLocation
 
+/**
+ A view for displaying current weather information.
+
+ Use this view to present current weather conditions, including temperature, weather icon, and additional details like maximum and minimum temperature, sunrise, and sunset times.
+ */
 struct CurrentWeatherView: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The title of the location.
     var locationTitle: String
     
     var body: some View {
@@ -56,8 +63,8 @@ struct CurrentWeatherView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue.opacity(0.2))
-                    //.cornerRadius(10)
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(10)
                     
                     Spacer()
                 }//.padding()
@@ -85,6 +92,7 @@ struct CurrentWeatherView: View {
     }
 }
 
+/// Function to get the formatted date string.
 func getFormattedDate() -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd/MM/yyyy"

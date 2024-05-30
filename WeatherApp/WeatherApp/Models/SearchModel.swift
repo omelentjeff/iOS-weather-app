@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+/**
+ Represents search data including an array of search results.
+ */
 struct SearchData: Codable {
     let results: [SearchResult]
 }
 
+/**
+ Represents a search result including its ID, name, latitude, longitude, and country.
+ */
 struct SearchResult: Codable {
     let id: Int
     let name: String
@@ -19,6 +25,9 @@ struct SearchResult: Codable {
     let country: String
 }
 
+/**
+ Represents errors that can occur during search operations.
+ */
 enum SearchError: Error {
     case invalidURL
     case invalidResponse

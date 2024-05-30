@@ -8,9 +8,15 @@
 import SwiftUI
 import CoreLocation
 
+/**
+ A view displaying detailed weather information for a specific city.
+ */
 struct CityDetailView: View {
+    /// The city for which weather information is displayed.
     var city: SearchResult
+    /// The view model responsible for fetching weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The presentation mode environment variable used to dismiss the view.
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     
@@ -38,9 +44,8 @@ struct CityDetailView: View {
                     .tint(Color.white)
                 }
                 .padding()
-                .position(x: geometry.safeAreaInsets.leading + 50, y: geometry.safeAreaInsets.top + 10) 
+                .position(x: geometry.safeAreaInsets.leading + 50, y: geometry.safeAreaInsets.top + 10)
             }
-            //.background(Color.blue.opacity(0.2))
         }
     }
 }

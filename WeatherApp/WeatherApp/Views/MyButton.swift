@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyButton: View {
+/*struct MyButton: View {
     var image: String
     var color: Color
     var label: String
@@ -27,3 +27,4 @@ struct MyButton: View {
         }
     }
 }
+*/

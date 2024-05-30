@@ -7,15 +7,26 @@
 
 import SwiftUI
 
+/**
+ A view for displaying hourly weather information.
+
+ Use this view to present hourly temperature data for a specific date, typically within the next 24 hours.
+
+ */
 struct HourlyWeatherView: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The date for which hourly weather data is displayed.
     var date: Date?
+    /// A boolean indicating whether the view is embedded within another view.
     var isEmbedded: Bool = false
     
+    /// A boolean indicating whether the displayed date is today.
     var isToday: Bool {
         date == nil
     }
     
+    /// An array containing hourly temperature data.
     var hourlyTemperatures: [HourlyTemperature] {
         viewModel.getNext24HoursTemperatures(for: date)
     }
@@ -44,8 +55,5 @@ struct HourlyWeatherView: View {
             }
         }
         .padding(isEmbedded ? 5 : 24)
-        /*.background(Color.blue.opacity(0.2))
-        .cornerRadius(15)
-        .padding(.horizontal, 16)*/
     }
 }

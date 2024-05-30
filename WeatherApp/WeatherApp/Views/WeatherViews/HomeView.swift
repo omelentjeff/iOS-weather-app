@@ -8,10 +8,19 @@
 import SwiftUI
 import CoreLocation
 
+/**
+ A view representing the home screen of the WeatherApp.
+
+ Use this view to display weather information and forecasts for a specific location.
+ */
 struct HomeView: View {
+    /// The view model containing weather data.
     @ObservedObject var viewModel: WeatherViewModel
+    /// The coordinates of the location.
     var coordinates: CLLocationCoordinate2D
+    /// The title of the location.
     var title: String
+    /// The index of the selected tab.
     @State private var selectedTabIndex = 0
     
     var body: some View {
