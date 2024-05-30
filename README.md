@@ -1,116 +1,59 @@
-# Learn Languages App
-Application for learning new words! Students can learn new words and teachers can create, delete and update words.
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 03 43" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/8849e0a8-2903-436a-8a4c-ac6f88e717f2"># iOS Weather App
+Mobile application for iOS. Display current, future and searchable weather for user's location and any other city!
 
 ## Motivation
-Final project for the backend development course in TAMK.
+Final project for the mobile development course in TAMK.
 
 ## Tech/framework used
-Node.js, Express, React.js, Docker, MySQL, Material.ui
+Swift
+Open-Meteo Forecast API
+Open-Meteo Geocoding API
 
 ## Features
-- Sign in / Sign up authorization
-- Teacher can create, edit and delete word pairs
-- Teacher can add and delete languages
-- Teacher can add new categories
+- Display current weather for user's location
+- Display 7-day forecast for user's location
 
-- Student can choose which languages to learn
-- Student can choose which language to answer in
-- Student can choose exercises based on categories
+- Search feature to look for any cities in the world
+- Display current weather for searched city
+- Display 7-day Forecat for searched city
 
-- Responsive UI
-- UI made with material.ui
+- Detailed weather data such as rain probability chart, sunrise/sunset, highest/lowest temperature etc... For current and searched location
+
+- Auto-suggestion for city search
+- Debouncing implemented to limit API fetches made
+
+- Dark/Light mode
+
+- Splash screen to enhance UX, initial data fetching is done in the background
 
 ## Screencast
-https://youtu.be/1D6-AZHRRi8&t=000s
+https://youtu.be/BTcy5UScZTA?si=BoFhJKVSi5YJl5nq
 
  
 ### Screenshots
 
-## User views
+### Splash screen
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 03 43" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/b1b2c044-c89b-4458-8b28-b809f02936e7">
 
-### Login page
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 26 24" src="https://github.com/omelentjeff/learn-languages/assets/113348736/1092d8bd-994f-4e60-832d-1cc9e9b1f048">
+### Home Screen / Current Weather
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 07" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/1e4a1e02-dcc4-48e3-9163-6d8400c9cd9d">
 
-### Sign up page
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 28 42" src="https://github.com/omelentjeff/learn-languages/assets/113348736/a2d99598-5d86-47e2-960a-7151a3a9f60a">
+### Home Screen / Rain chart and 7-day Forecast
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 35" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/2ee73a07-e60f-4127-b8f8-53baf2e997bb">
 
-### User Dashboard
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 29 30" src="https://github.com/omelentjeff/learn-languages/assets/113348736/0318d7d7-70f0-4bba-8b77-677c556de03f">
+### Detailed daily weather data on click
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 42" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/0731b13b-8400-43b0-bddb-16e9520a9be4">
 
-### Choosing category and answer language
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 30 23" src="https://github.com/omelentjeff/learn-languages/assets/113348736/5e29d073-784c-4b8b-87d2-367c2a0fcdd2">
+### Search
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 50" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/ab9811b9-1e9b-45bc-999c-a4aae6ab60ed">
 
-### Play view
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 30 48" src="https://github.com/omelentjeff/learn-languages/assets/113348736/68dc1e4f-6873-4b9f-91ed-2d061ca5874c">
+### Search Screen / Current Weather
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 53" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/5003a3d5-2333-41fd-a425-42ba700e8280">
 
-### Result page
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 31 12" src="https://github.com/omelentjeff/learn-languages/assets/113348736/e59b610b-3c59-4a56-9fb1-575b21834e1e">
+### Search Screen / Rain chart and 7-day Forecast
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 06" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/11711b87-efc6-4d58-8138-f15cefa4131c">
 
-## Teacher views
-
-### Teacher dashboard
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 32 06" src="https://github.com/omelentjeff/learn-languages/assets/113348736/a96f5d07-46eb-4cc6-bdc9-9602c1b5bd6c">
-
-### Add new language
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 34 30" src="https://github.com/omelentjeff/learn-languages/assets/113348736/fccace58-23c7-43fe-8d19-40ea835eff6b">
-
-
-### Edit view
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 32 30" src="https://github.com/omelentjeff/learn-languages/assets/113348736/4d35c41b-b1c8-4cb4-87e7-f7fa6a30a8be">
-
-### Create new word pair
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 33 04" src="https://github.com/omelentjeff/learn-languages/assets/113348736/edfd316a-9f10-49da-995f-88f85077c928">
-
-### Add new category
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 33 29" src="https://github.com/omelentjeff/learn-languages/assets/113348736/f4abc0f9-23dd-43ea-bc81-c2a511f3a0a1">
-
-### Edit word pairs
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 33 51" src="https://github.com/omelentjeff/learn-languages/assets/113348736/be55c56b-72eb-4bd8-b9e7-dc4ba1e3d922">
-
-### Delete word pairs
-<img width="1440" alt="Näyttökuva 2024-1-19 kello 22 34 12" src="https://github.com/omelentjeff/learn-languages/assets/113348736/2e17e748-be55-495e-a012-78e38dba7403">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Installation
-
-### Cloud
-https://learn-languages-9x4r.onrender.com
-
-### Locally
-
-1. Clone this repository by clicking the blue 'code' button and choose HTTPS, copy url
-2. Open your terminal and go to desired folder and enter git clone "copied url"
-3. In your terminal, go to root directory
-4. When in root directory, install dependencies: npm run install-all
-5. Start the app while in root directory: npm run start
-6. Open your browser in localhost provided by the terminal
-
+### Light/Dark Mode -toggle
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 16" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/4436800e-86a3-47db-bfeb-b25fe0774b7f">
 
  © [Otto Melentjeff]()
