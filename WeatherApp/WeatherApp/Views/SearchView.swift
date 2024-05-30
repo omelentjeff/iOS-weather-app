@@ -67,9 +67,10 @@ struct SearchView: View {
                .background(Color.blue.opacity(0.2))
                .navigationBarHidden(true)
                .edgesIgnoringSafeArea(.top)
-           }//.background(Color.blue.opacity(0.2))
-           //.ignoresSafeArea()
-       }
+           }.onAppear {
+               UITextField.appearance().clearButtonMode = .whileEditing
+           }
+    }
 }
 
 struct OvalTextFieldStyle: TextFieldStyle {

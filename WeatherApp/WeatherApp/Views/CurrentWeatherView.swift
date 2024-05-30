@@ -23,7 +23,8 @@ struct CurrentWeatherView: View {
                     
                         HStack {
                             Text(String(format: "%.0f°", weatherData.current.temperature2M)).font(.system(size: 74)).padding()
-                            Image(systemName: "sun.max").font(.system(size: 74))
+                            let iconName = WeatherIcon.iconName(for: weatherData.current.weatherCode)
+                            Image(systemName: iconName).resizable().frame(width: 74, height: 74)
                         }
                     
                     HourlyWeatherView(viewModel: viewModel)

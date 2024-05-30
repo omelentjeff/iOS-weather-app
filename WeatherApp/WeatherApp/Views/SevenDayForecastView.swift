@@ -15,7 +15,7 @@ struct SevenDayForecastView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 40) {
                 ChartView(viewModel: viewModel).padding()
                 
                 GroupBox("7 Days") {
@@ -26,6 +26,7 @@ struct SevenDayForecastView: View {
                         let minTemperatures = temperatures.minTemperatures
                         let sunrises = temperatures.sunrise
                         let sunsets = temperatures.sunset
+                        let weatherCodes = temperatures.weatherCodes
                         let dates = temperatures.dates
                         let dateString = dates[index].toString(format: "yyyy-MM-dd")
                         let weekday = getWeekday(from: dateString) ?? "Unknown"
@@ -33,7 +34,7 @@ struct SevenDayForecastView: View {
                         VStack {
                             Divider()
                             Spacer()
-                            DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], sunrise: sunrises[index], sunset: sunsets[index], isSelected: selectedDailyIndex == index, buttonAction: {
+                            DailyItemView(weekday: weekday, maxTemperature: maxTemperatures[index], minTemperature: minTemperatures[index], sunrise: sunrises[index], sunset: sunsets[index], weatherCode: weatherCodes[index], isSelected: selectedDailyIndex == index, buttonAction: {
                                 withAnimation(.easeInOut(duration: 0.2)) {
                                     if self.selectedDailyIndex == index {
                                         self.selectedDailyIndex = nil

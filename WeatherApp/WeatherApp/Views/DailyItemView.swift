@@ -13,6 +13,7 @@ struct DailyItemView: View {
     let minTemperature: Double
     let sunrise: String
     let sunset: String
+    let weatherCode: Int
     let isSelected: Bool
     let buttonAction: () -> Void
     @State private var rotationAngle = Angle(degrees: 0)
@@ -20,7 +21,10 @@ struct DailyItemView: View {
     var body: some View {
         HStack {
             Text(weekday).font(.system(size: 18))
-            Image(systemName: "sun.max.fill").foregroundStyle(Color.yellow).font(.system(size: 20))
+                .frame(width: 50, alignment: .leading)
+            let iconName = WeatherIcon.iconName(for: weatherCode)
+            Image(systemName: iconName).font(.system(size: 20))
+                //.frame(width: 30)
             Spacer()
             VStack(spacing: 10) {
                 HStack(spacing: 40) {

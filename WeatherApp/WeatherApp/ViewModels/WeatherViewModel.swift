@@ -42,7 +42,7 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getWeather(coordinates: CLLocationCoordinate2D) async throws -> WeatherData {
-        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=temperature_2m,apparent_temperature&hourly=temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&timezone=auto"
+        let endpoint = "https://api.open-meteo.com/v1/forecast?latitude=\(coordinates.latitude)&longitude=\(coordinates.longitude)&current=weather_code,temperature_2m,apparent_temperature&hourly=weather_code,temperature_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&timezone=auto"
         
         guard let url = URL(string: endpoint) else { throw WeatherError.invalidURL }
         
@@ -62,7 +62,8 @@ class WeatherViewModel: ObservableObject {
     }
     
     func getNext24HoursTemperatures(for date: Date? = nil) -> [HourlyTemperature] {
-        guard let hourlyTemps = weatherData?.hourly.temperature2M else { return [] }
+        guard let hourlyTemps = weatherData?.hourly.temperature2M,
+              let weatherCodes = weatherData?.hourly.weatherCode else { return [] }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH"
@@ -82,9 +83,10 @@ class WeatherViewModel: ObservableObject {
         for i in currentIndex..<min(currentIndex + 24, hourlyTemps.count) {
             let fullHourString = weatherData?.hourly.time[i] ?? ""
             let hour = fullHourString.components(separatedBy: "T")[1].components(separatedBy: ":")[0]
-           let temperature = hourlyTemps[i]
-           let hourlyTemp = HourlyTemperature(hour: hour, temperature: temperature)
-           hourlyTemperatures.append(hourlyTemp)
+            let temperature = hourlyTemps[i]
+            let weatherCode = weatherCodes[i]
+            let hourlyTemp = HourlyTemperature(hour: hour, temperature: temperature, weatherCode: weatherCode)
+            hourlyTemperatures.append(hourlyTemp)
        }
         
         return hourlyTemperatures
@@ -92,12 +94,13 @@ class WeatherViewModel: ObservableObject {
 
 
     
-    func getSevenDaysTemperatures() -> (dates: [Date], sunrise: [String], sunset: [String], maxTemperatures: [Double], minTemperatures: [Double]) {
+    func getSevenDaysTemperatures() -> (dates: [Date], sunrise: [String], sunset: [String], weatherCodes: [Int], maxTemperatures: [Double], minTemperatures: [Double]) {
         guard let dateStringArray = weatherData?.daily.time,
               let sunriseArray = weatherData?.daily.sunrise,
               let sunsetArray = weatherData?.daily.sunset,
+              let weatherCodes = weatherData?.daily.weatherCode,
               let maxTemperature = weatherData?.daily.temperature2MMax,
-              let minTemperature = weatherData?.daily.temperature2MMin else { return ([], [], [], [], []) }
+              let minTemperature = weatherData?.daily.temperature2MMin else { return ([], [], [], [], [], []) }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -111,7 +114,7 @@ class WeatherViewModel: ObservableObject {
         let sunset = getHoursFormatted(stringArray: sunsetArray)
         
         print(sunrise)
-        return (dates, sunrise, sunset, maxTemperature, minTemperature)
+        return (dates, sunrise, sunset, weatherCodes, maxTemperature, minTemperature)
     }
     
     func getSevenDaysRainProbabilities() -> [RainData] {
@@ -136,6 +139,10 @@ class WeatherViewModel: ObservableObject {
         
         return rainData
     }
+    
+    func getWeatherIcon(for weatherCode: Int) -> String {
+       return WeatherIcon.iconName(for: weatherCode)
+   }
 }
 
 struct RainData: Codable, Identifiable {

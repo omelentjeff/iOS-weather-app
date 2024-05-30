@@ -16,7 +16,8 @@ struct HourlyItemView: View {
     var body: some View {
         VStack(spacing: 10) {
             Text(index == 0 && isToday ? "Now" : hourlyTemp.hour)
-            Image(systemName: "sun.min")
+            let iconName = WeatherIcon.iconName(for: hourlyTemp.weatherCode)
+            Image(systemName: iconName)
             Text(String(format: "%.0f°", hourlyTemp.temperature))
                 .font(.system(size: isEmbedded ? 16 : 18)).bold()
         }
