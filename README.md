@@ -15,7 +15,7 @@ Final project for the mobile development course in TAMK.
 
 - Search feature to look for any cities in the world
 - Display current weather for searched city
-- Display 7-day Forecast for searched city
+- Display 7-day forecast for searched city
 
 - Detailed weather data such as rain probability chart, sunrise/sunset, highest/lowest temperature etc... For current and searched location
 
