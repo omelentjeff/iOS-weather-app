@@ -14,7 +14,7 @@ class WeatherViewModel: ObservableObject {
     @Published var selectedDate: Date?
     @Published var loading: Bool = false
     
-    @StateObject var cacheViewModel = CacheViewModel()
+    @ObservedObject var cacheViewModel = CacheViewModel()
     
     var latitude: Double?
     var longitude: Double?
@@ -22,22 +22,42 @@ class WeatherViewModel: ObservableObject {
     func fetchWeather(for date: Date, coordinates: CLLocationCoordinate2D) {
         self.loading = true
         print("Loading = true")
+        
         Task {
             do {
-                let weather = try await getWeather(coordinates: coordinates)
-                DispatchQueue.main.async {
-                    self.weatherData = weather
-                    self.selectedDate = date
-                    if let latitude = self.weatherData?.latitude,
-                      let longitude = self.weatherData?.longitude {
-                        self.loading = false
-                        print("Loading = false")
-                       print(" ViewModel Loaded weather \(latitude) \(longitude)")
-                   } else {
-                       print("Loaded weather, but latitude or longitude is missing.")
-                   }
+                // Attempt to get weather data from cache
+                if let cachedData = cacheViewModel.getFromCache(latitude: coordinates.latitude, longitude: coordinates.longitude) {
+                    DispatchQueue.main.async {
+                        self.weatherData = cachedData
+                        self.selectedDate = date
+                        if let latitude = self.weatherData?.latitude,
+                            let longitude = self.weatherData?.longitude {
+                            self.loading = false
+                            print("Loading = false")
+                            print("ViewModel Loaded weather \(latitude) \(longitude) from cache")
+                        } else {
+                            print("Loaded weather from cache, but latitude or longitude is missing.")
+                        }
+                    }
+                } else {
+                    // Data not found in cache, fetch from API
+                    let weather = try await getWeather(coordinates: coordinates)
+                    DispatchQueue.main.async {
+                        self.weatherData = weather
+                        self.selectedDate = date
+                        if let latitude = self.weatherData?.latitude,
+                            let longitude = self.weatherData?.longitude {
+                            self.loading = false
+                            print("Loading = false")
+                            print("ViewModel Loaded weather \(latitude) \(longitude) from API")
+                        } else {
+                            print("Loaded weather from API, but latitude or longitude is missing.")
+                        }
+                        // Cache the fetched data
+                        self.cacheViewModel.saveToCache(data: weather, latitude: coordinates.latitude, longitude: coordinates.longitude)
+                    }
                 }
-            } catch {
+                }  catch {
                 print(error)
             }
         }

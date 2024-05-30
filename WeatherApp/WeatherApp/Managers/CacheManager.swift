@@ -14,24 +14,27 @@ final class CacheManager {
     
     private init() { }
     
-    var weatherCache: NSCache<NSNumber, StructWrapper<WeatherData>> = {
-        let cache = NSCache<NSNumber, StructWrapper<WeatherData>>()
+    var weatherCache: NSCache<NSString, StructWrapper<WeatherData>> = {
+        let cache = NSCache<NSString, StructWrapper<WeatherData>>()
         cache.countLimit = 100
         cache.totalCostLimit = 1024 * 1024 * 100 // 100mb
         return cache
     }()
     
-    func add(data: StructWrapper<WeatherData>, id: Int) {
-        weatherCache.setObject(data, forKey: id as NSNumber)
+    func add(data: StructWrapper<WeatherData>, latitude: Double, longitude: Double) {
+        let key = "\(latitude)_\(longitude)" as NSString
+        weatherCache.setObject(data, forKey: key)
         print("Added to cache")
     }
     
-    func remove(id: Int) {
-        weatherCache.removeObject(forKey: id as NSNumber)
+    func remove(latitude: Double, longitude: Double) {
+        let key = "\(latitude)_\(longitude)" as NSString
+        weatherCache.removeObject(forKey: key)
         print("Removed from cache")
     }
     
-    func get(id: Int) -> StructWrapper<WeatherData>? {
-        return weatherCache.object(forKey: id as NSNumber)
+    func get(latitude: Double, longitude: Double) -> StructWrapper<WeatherData>? {
+        let key = "\(latitude)_\(longitude)" as NSString
+        return weatherCache.object(forKey: key)
     }
 }

@@ -8,21 +8,20 @@
 import SwiftUI
 
 final class CacheViewModel: ObservableObject {
-    @Published var cachedData: WeatherData?
     
     let manager = CacheManager.instance
     
-    func saveToCache(data: WeatherData, id: Int) {
-        let wrappedData = StructWrapper(data)
-        manager.add(data: wrappedData, id: id)
-    }
-    
-    func removeFromCache(id: Int) {
-        manager.remove(id: id)
-    }
-    
-    func getFromCache(id: Int) {
-        let wrappedData = manager.get(id: id)
-        cachedData = wrappedData?.value
-    }
+    func saveToCache(data: WeatherData, latitude: Double, longitude: Double) {
+       let wrappedData = StructWrapper(data)
+       manager.add(data: wrappedData, latitude: latitude, longitude: longitude)
+   }
+   
+   func removeFromCache(latitude: Double, longitude: Double) {
+       manager.remove(latitude: latitude, longitude: longitude)
+   }
+   
+   func getFromCache(latitude: Double, longitude: Double) -> WeatherData? {
+       let wrappedData = manager.get(latitude: latitude, longitude: longitude)
+       return wrappedData?.value
+   }
 }
