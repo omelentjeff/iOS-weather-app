@@ -1,4 +1,4 @@
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 03 43" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/8849e0a8-2903-436a-8a4c-ac6f88e717f2"># iOS Weather App
+# iOS Weather App
 Mobile application for iOS. Display current, future and searchable weather for user's location and any other city!
 
 ## Motivation
