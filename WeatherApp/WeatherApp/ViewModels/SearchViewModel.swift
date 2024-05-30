@@ -47,11 +47,19 @@ class SearchViewModel: ObservableObject {
             do {
                 let search = try await getSearchResults(for: query)
                 DispatchQueue.main.async {
-                    self.searchData = search
-                    self.loading = false
-                    print("Loaded search results")
-                }
+                   if search.results.isEmpty {
+                       self.searchData = SearchData(results: []) // Set to empty results
+                   } else {
+                       self.searchData = search
+                   }
+                   self.loading = false
+                   print("Loaded search results")
+               }
             } catch {
+                DispatchQueue.main.async {
+                   self.searchData = SearchData(results: []) // Set to empty results on error
+                   self.loading = false
+               }
                 print(error)
             }
         }
