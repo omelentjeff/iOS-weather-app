@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct WeatherData: Codable {
+struct WeatherData: Codable, Identifiable {
+    var id = UUID()
     let latitude: Double
     let longitude: Double
     let current: Current
