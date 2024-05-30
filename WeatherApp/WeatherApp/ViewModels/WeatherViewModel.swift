@@ -14,6 +14,8 @@ class WeatherViewModel: ObservableObject {
     @Published var selectedDate: Date?
     @Published var loading: Bool = false
     
+    @StateObject var cacheViewModel = CacheViewModel()
+    
     var latitude: Double?
     var longitude: Double?
     

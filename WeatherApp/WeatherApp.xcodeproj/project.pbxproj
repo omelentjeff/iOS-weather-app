@@ -35,6 +35,8 @@
 		E8CA51262C02131D00BB712D /* CityDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA51252C02131D00BB712D /* CityDetailView.swift */; };
 		E8E2D1A12C087CE900050931 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2D1A02C087CE900050931 /* ChartView.swift */; };
 		E8E2D1A32C08D6BC00050931 /* CacheViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2D1A22C08D6BC00050931 /* CacheViewModel.swift */; };
+		E8E2D1A62C08D77600050931 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2D1A52C08D77600050931 /* CacheManager.swift */; };
+		E8E2D1A82C08DA4500050931 /* StructWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E2D1A72C08DA4500050931 /* StructWrapper.swift */; };
 		E8E3F88D2BEE9BB500AB81C2 /* HourlyWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F88C2BEE9BB500AB81C2 /* HourlyWeatherView.swift */; };
 		E8E3F88F2BEE9E6400AB81C2 /* HourlyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F88E2BEE9E6400AB81C2 /* HourlyItemView.swift */; };
 		E8E3F8912BEF8DBC00AB81C2 /* DailyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E3F8902BEF8DBC00AB81C2 /* DailyItemView.swift */; };
@@ -70,6 +72,8 @@
 		E8CA51252C02131D00BB712D /* CityDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailView.swift; sourceTree = "<group>"; };
 		E8E2D1A02C087CE900050931 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		E8E2D1A22C08D6BC00050931 /* CacheViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheViewModel.swift; sourceTree = "<group>"; };
+		E8E2D1A52C08D77600050931 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		E8E2D1A72C08DA4500050931 /* StructWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructWrapper.swift; sourceTree = "<group>"; };
 		E8E3F88C2BEE9BB500AB81C2 /* HourlyWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeatherView.swift; sourceTree = "<group>"; };
 		E8E3F88E2BEE9E6400AB81C2 /* HourlyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyItemView.swift; sourceTree = "<group>"; };
 		E8E3F8902BEF8DBC00AB81C2 /* DailyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyItemView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E883BBE62BE7B1EA003A0CC1 /* WeatherAppApp.swift */,
+				E8E2D1A42C08D74000050931 /* Managers */,
 				E815E30D2C0632F0001E48ED /* Util */,
 				E83CF23E2BFE5DBA0059D806 /* Models */,
 				E86B56E42BECE9FF00985213 /* ViewModels */,
@@ -186,6 +191,15 @@
 				E883BBF92BE7C275003A0CC1 /* SearchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E8E2D1A42C08D74000050931 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E8E2D1A52C08D77600050931 /* CacheManager.swift */,
+				E8E2D1A72C08DA4500050931 /* StructWrapper.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +288,7 @@
 				E883BC062BEA824B003A0CC1 /* CurrentWeatherView.swift in Sources */,
 				E883BC042BEA3ABC003A0CC1 /* DarkModeViewModifier.swift in Sources */,
 				E83CF2402BFE5DC60059D806 /* WeatherModel.swift in Sources */,
+				E8E2D1A62C08D77600050931 /* CacheManager.swift in Sources */,
 				E8CA51222C01EFFE00BB712D /* SearchModel.swift in Sources */,
 				E883BBE72BE7B1EA003A0CC1 /* WeatherAppApp.swift in Sources */,
 				E883BBFE2BE7CC8D003A0CC1 /* FavoritesView.swift in Sources */,
@@ -285,6 +300,7 @@
 				E86444FC2BF66BE40006951D /* MapView.swift in Sources */,
 				E830663B2BEBC07D002A6CB1 /* ContainerView.swift in Sources */,
 				E883BBFC2BE7C5F4003A0CC1 /* MyButton.swift in Sources */,
+				E8E2D1A82C08DA4500050931 /* StructWrapper.swift in Sources */,
 				E83066392BEBC070002A6CB1 /* SplashScreenView.swift in Sources */,
 				E8CA51242C01F3B500BB712D /* SearchItemView.swift in Sources */,
 			);
