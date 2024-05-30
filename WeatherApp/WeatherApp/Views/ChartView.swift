@@ -20,9 +20,9 @@ struct ChartView: View {
                     LineMark(
                         x: PlottableValue.value("Date", item.date),
                         y: PlottableValue.value("%", item.rainProbability)
-                    )
+                    ).symbol(.circle)
                 }
-            }
+            }.chartYScale(domain: 0...100)
         }
         .onAppear {
             self.rainData = self.viewModel.getSevenDaysRainProbabilities()
