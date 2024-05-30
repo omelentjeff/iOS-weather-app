@@ -1,5 +1,5 @@
 # iOS Weather App
-Mobile application for iOS. Display current, future and searchable weather for user's location and any other city!
+Weather application for iOS. Display current, future and searchable weather for user's location and any other city!
 
 ## Motivation
 Final project for the mobile development course in TAMK.
