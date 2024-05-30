@@ -15,6 +15,7 @@ struct CityDetailView: View {
     
     
     var body: some View {
+        GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
                 VStack {
                     HomeView(viewModel: viewModel, coordinates: CLLocationCoordinate2D(latitude: city.latitude, longitude: city.longitude), title: city.name)
@@ -32,16 +33,14 @@ struct CityDetailView: View {
                 }) {
                     HStack {
                         Image(systemName: "chevron.left").font(.system(size: 18))
-                        Text("Back").font(.system(size: 18))
+                        Text("Search").font(.system(size: 18))
                     }
                     .tint(Color.white)
-                    //.padding(.bottom, 40)
-                    //.background(Color.white.opacity(0.8))
-                    //.cornerRadius(8)
                 }
                 .padding()
+                .position(x: geometry.safeAreaInsets.leading + 50, y: geometry.safeAreaInsets.top + 10) 
             }
             //.background(Color.blue.opacity(0.2))
-            
         }
+    }
 }
