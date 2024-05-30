@@ -10,12 +10,13 @@ Final project for the mobile development course in TAMK.
 - Open-Meteo Geocoding API
 
 ## Features
-- Display current weather for user's location
-- Display 7-day forecast for user's location
+- Display current weather for user's location and searched location
+- Display weather for next 24 hours from current time
+- Display 7-day forecast
+- Display hourly weather for 7-day forecasts
 
 - Search feature to look for any cities in the world
-- Display current weather for searched city
-- Display 7-day forecast for searched city
+
 
 - Detailed weather data such as rain probability chart, sunrise/sunset, highest/lowest temperature etc... For current and searched location
 
