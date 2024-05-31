@@ -21,7 +21,7 @@ Final project for the mobile development course in TAMK.
 - Detailed weather data such as rain probability chart, sunrise/sunset, highest/lowest temperature etc... For current and searched location
 
 - Auto-suggestion for city search
-- Debouncing implemented to limit API fetches made
+- User input debouncing for reducing API calls
 
 - Dark/Light mode
 
