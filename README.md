@@ -26,10 +26,6 @@ Final project for the mobile development course in TAMK.
 - Dark/Light mode
 
 - Splash screen to enhance UX, initial data fetching is done in the background
-
-## Screencast
-https://youtu.be/BTcy5UScZTA?si=BoFhJKVSi5YJl5nq
-
  
 ### Screenshots
 
