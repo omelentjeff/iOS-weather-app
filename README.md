@@ -34,24 +34,31 @@ Final project for the mobile development course in TAMK.
 
 
 ### Home Screen / Current Weather
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 07" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/1e4a1e02-dcc4-48e3-9163-6d8400c9cd9d">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 07" src="https://github.com/user-attachments/assets/7483d369-0110-4daa-9c13-8a13e9d16e0b">
+
 
 ### Home Screen / Rain chart and 7-day Forecast
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 35" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/2ee73a07-e60f-4127-b8f8-53baf2e997bb">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 35" src="https://github.com/user-attachments/assets/f9461cf4-e09d-44c8-b0bc-14dfca090e1b">
+
 
 ### Detailed daily weather data on click
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 42" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/0731b13b-8400-43b0-bddb-16e9520a9be4">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 42" src="https://github.com/user-attachments/assets/679e0abd-364d-4536-ad6d-a04f20633853">
+
 
 ### Search
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 50" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/ab9811b9-1e9b-45bc-999c-a4aae6ab60ed">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 50" src="https://github.com/user-attachments/assets/18d07100-c0f7-4244-a005-1630d8be5d9b">
+
 
 ### Search Screen / Current Weather
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 53" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/5003a3d5-2333-41fd-a425-42ba700e8280">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 53" src="https://github.com/user-attachments/assets/6a49f238-bf16-48e9-a319-520f4e0d3851">
+
 
 ### Search Screen / Rain chart and 7-day Forecast
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 06" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/11711b87-efc6-4d58-8138-f15cefa4131c">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 06" src="https://github.com/user-attachments/assets/81651710-3350-4349-8857-648dea13f38c">
+
 
 ### Light/Dark Mode -toggle
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 16" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/4436800e-86a3-47db-bfeb-b25fe0774b7f">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 05 16" src="https://github.com/user-attachments/assets/392dc92a-cb51-4202-8442-7517d0311d8e">
+
 
  © [Otto Melentjeff]()
