@@ -30,7 +30,8 @@ Final project for the mobile development course in TAMK.
 ### Screenshots
 
 ### Splash screen
-<img width="349" alt="Näyttökuva 2024-05-30 kello 22 03 43" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/b1b2c044-c89b-4458-8b28-b809f02936e7">
+<img width="349" alt="Näyttökuva 2024-05-30 kello 22 03 43" src="https://github.com/user-attachments/assets/734f2515-732e-43f7-aa06-41148401c36f">
+
 
 ### Home Screen / Current Weather
 <img width="349" alt="Näyttökuva 2024-05-30 kello 22 04 07" src="https://github.com/4A00EZ65-3004-Mobiilikehitys/mobile-project-omelentjeff/assets/113348736/1e4a1e02-dcc4-48e3-9163-6d8400c9cd9d">
